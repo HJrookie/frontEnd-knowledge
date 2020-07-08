@@ -31,7 +31,8 @@
 3. BFC可以包含浮动的元素,可以用来清除浮动,或者做自适应两栏布局 [清除浮动](https://jsfiddle.net/areYouOk/po0g97kv/32/)
 4. 计算BFC的高度时,浮动元素的高度也参与计算.
 5. 每个元素的左外边缘（margin-left)， 与包含该元素的块的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。除非这个元素自己形成了一个新的BFC [例子](https://jsfiddle.net/areYouOk/po0g97kv/41/)
-6. BFC的区域不会与float box重叠(float元素已经形成了一个新的BFC)
+6. BFC的区域不会与float box重叠(float元素已经形成了一个新的BFC)  
+###### 相互独立 互不影响  从上到下,margin重叠. 包含浮动,计算高度   左侧接触
 
 
 
