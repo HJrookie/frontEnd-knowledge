@@ -160,17 +160,21 @@ div.menu-bar li:hover > ul {
 
 
     
-      
-      #### 三栏布局
-      1. 利用flex实现
-      [三栏布局-flex](https://jsfiddle.net/areYouOk/6z918vf2/3/)  
-      > 最好用的.但是IE10才开始支持
-      2. 利用bfc和float实现  
-      [三栏布局-bfc+float](https://jsfiddle.net/areYouOk/6z918vf2/6/)  
-      > 注意在HTML文档中，先写两个float,再写中间的部分..如果按照左,中,右顺序去写,右侧的浮动元素将会向下偏移一段距离(中间部分的高度)
 
-    
- 
+#### 三栏布局
+1. 利用flex实现
+[三栏布局-flex](https://jsfiddle.net/areYouOk/6z918vf2/3/)  
+> 最好用的.但是IE10才开始支持
+2. 利用bfc和float实现  
+[三栏布局-bfc+float](https://jsfiddle.net/areYouOk/6z918vf2/6/)  
+> 注意在HTML文档中，先写两个float,再写中间的部分..如果按照左,中,右顺序去写,右侧的浮动元素将会向下偏移一段距离(中间部分的高度)
+
+##### CSS实现首字母大写.或者全大写,全小写:  
+> text-transform:capitalize/uppercase/lowercase  
+
+ ##### 伪类和伪元素区别
+ 伪类可以设置不同状态时元素的样式,以及指定奇数,或偶数个元素的样式  
+ 伪元素则是,可以创建一个新的元素,或者可以访问到元素中的内容的fist-letter,first-line.他有这样一种能力
 
 伪类和伪元素.
 块级元素,行内元素
