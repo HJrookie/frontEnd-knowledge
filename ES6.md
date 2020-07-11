@@ -13,3 +13,23 @@ var name = "bo";
 var a={...name,age:18}  //这里等同于 var a={..."bo",age:18}
 console.log(a)  //{0: "b", 1: "o", age: 18}
 ```
+### Object.assign()
+```js
+var obj1 = {
+  name: '123',
+  test: {
+    age: 12
+  }
+}
+
+var obj3 = {
+  get getMethod() {      //这里的getMethod会成为新对象的key,返回值会成为value
+    return '123'
+  },
+  meth() {
+    console.log('haha')
+  }
+}
+var target = Object.assign(obj1, obj3)
+console.log(target) // =>{name: "123", test: {…}, getMethod: "123", meth: ƒ}    target.getMethod()会报错，原因是发生了转换
+```
