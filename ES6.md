@@ -1,4 +1,4 @@
-### ...运算符
+### ... 运算符
 这个运算符用在数组或者对象里
 ```js
 //1. 数组 (直接跟字符串)
@@ -32,4 +32,13 @@ var obj3 = {
 }
 var target = Object.assign(obj1, obj3)
 console.log(target) // =>{name: "123", test: {…}, getMethod: "123", meth: ƒ}    target.getMethod()会报错，原因是发生了转换
+```
+### let相关
+1. TDZ (Temporary Dead Zone) 临时性死区
+```js
+console.log(typeof test)  //undefined
+var test =1;
+// 如果换成let
+console.log(typeof test)  //Reference Error,..is not defined
+var test =1;
 ```
