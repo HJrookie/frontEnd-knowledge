@@ -9,9 +9,11 @@
 - 302 Found
 - 400 
 - 401 Unauthorized
-- 402
 - 403 请求被拒绝了
 - 404
 - 500
 - 502 Bad Gateway
 - 503 Service Unavailable
+
+### TCP,UDP
+TCP: 基于连接的,

@@ -55,12 +55,12 @@ inner加上
  position:relative;
   transform:translateY(50%)
 ```
-当子元素的height,width都是50%的可以
-[transform垂直居中](https://jsfiddle.net/areYouOk/0q581jd3/16/)  
+当子元素的height,width都是50%时,可以用
+[例子](https://jsfiddle.net/areYouOk/0q581jd3/16/)  
 第二种是多了top,向下偏移.然后translateY再向上偏移
 [transform垂直居中2](https://jsfiddle.net/areYouOk/0q581jd3/20/) 
 
-##### 方法4 translate相关的
+##### 方法4 transform相关的
 在子元素身上添加  
 ```
 当子元素的height,width都是50%的可以
@@ -76,7 +76,14 @@ inner加上
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  ```  
+  其变形为  
   ```
+   bottom:-50%;
+ right:-50%;
+ transform:translate(-50%,-50%)
+  ```
+  [变形-right,-bottom](https://jsfiddle.net/areYouOk/0q581jd3/61/)
 [第二种](https://jsfiddle.net/areYouOk/0q581jd3/31/)
 ##### 方法5 justify-content,align-items
 在父元素上添加  
