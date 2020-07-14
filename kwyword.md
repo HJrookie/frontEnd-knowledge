@@ -4,8 +4,18 @@
 overflow display
 
 ### 网络七层
-
-物理层-数据链路层-网络层-传输层-会话-表示-应用层
+####物理层
+双绞线,光纤  电信号
+----
+####数据链路层
+传输的是帧,
+----
+####网络层
+IP,ICMP,ARP,RARP
+----
+####传输层
+####会话-表示-应用层
+HTTP,HTTPS,FTP,SFTP,DNS
 
 ### 三栏布局 flwx
 
@@ -42,3 +52,15 @@ margin: 0 auto;
 或者 transform:translate(-50%,-50%) 结合top和left,或者右下(负的即可)
 
 #### ExternalInterface,flash相关
+
+### 元素高度
+x=> scrool/inner => offset
+inner网页显示的区域,包含滚动条的,outer就是窗口大小
+空sino 记住sino
+
+#### indexOf
+```
+var str = "aaa?bbbccc"
+str.slice(str.indexOf('?'))
+```
+**indexOf直接截取是包含?的**

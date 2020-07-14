@@ -16,4 +16,7 @@
 - 503 Service Unavailable
 
 ### TCP,UDP
-TCP: 基于连接的,
+TCP: 面向连接的,三次握手,四次挥手,保证数据正确以及数据顺序 
+UDP: 无连接,尽最大努力交付的,可能会丢包,顺序会乱
+
+?JfEHg2tDL+rJ>%
