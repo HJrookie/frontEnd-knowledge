@@ -64,7 +64,10 @@ console.log(url.search);    // ?q=URL
 console.log(url.hash);      // #search-results-close-container
 console.log(url.origin);    // https://developer.mozilla.org
 ```
-#### location.assign
+#### location.assign()
+location.replace(),不会生成历史记录,流氓网站最喜欢用  
+location.reload() 刷新网页  
+location.reload(true) //强制从服务器刷新
 可以修改页面,或者 修改location的上面列出的属性的值,或者用history.go(-1,0,1)  
 history.back()  / forward() 分别是 history.go(-1) / (1)的语法糖.  
 ### 获取查询字符串参数

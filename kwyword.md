@@ -2,6 +2,9 @@
 
 绝对定位 float  
 overflow display
+#### BFC特性
+相互独立 互不影响,从上到下,margin重叠, 包含浮动元素,高度被计算在内  
+每个元素左边缘与该元素的父元素的左侧向接触.(左到右).对于浮动元素也是如此.除非该元素自己形成了新的BFC
 
 ### 网络七层
 ####物理层
@@ -19,7 +22,11 @@ HTTP,HTTPS,FTP,SFTP,DNS
 
 ### 三栏布局 flwx
 
-justify-content: space-between
+justify-content: space-between  
+align-self/align-items  
+vertical-align:middle, + inline-block  
+content:'', + height: 100% + display:inline-block,+ "vertical-align"  
+
 
 ### 闭包和循环结合引起的问题
 
@@ -33,6 +40,7 @@ justify-content: space-between
 ### 幂等
 HEAD,PUT,GET,Delete,Options
 PUT 是幂等的,POST 不是，可能会多次提交订单,
+HEAD,跟get一样，但是没有响应体
 
 ### 定位
 position如果不是relative,设置top,bottom,left,right没有用的
@@ -49,7 +57,7 @@ align-items: center;
 justify-content:center;
 对于子元素:
 margin: 0 auto;
-或者 transform:translate(-50%,-50%) 结合top和left,或者右下(负的即可)
+或者 transform:translate(-50%,-50%) 结合top和left,或者右下(负的即可)，以及relative
 
 #### ExternalInterface,flash相关
 
@@ -64,3 +72,12 @@ var str = "aaa?bbbccc"
 str.slice(str.indexOf('?'))
 ```
 **indexOf直接截取是包含?的**
+
+## isNAN
+window.isNAN, 如果转换成数字为NAN，那么还是为true 
+Number.isNAN ，只对NAN有用
+
+
+### ws,connnection,upgrade,websocket
+
+#### 除2商0,乘2小数为0

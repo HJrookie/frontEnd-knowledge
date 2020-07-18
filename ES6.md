@@ -12,6 +12,10 @@ console.log(array)  //[1, 2, 3, 4, 5, "h", "e", "l", "l", "o"]
 var name = "bo";
 var a={...name,age:18}  //这里等同于 var a={..."bo",age:18}
 console.log(a)  //{0: "b", 1: "o", age: 18}
+// 例子2
+var name = "bo";
+var a={name,age:18}  //这里相当于直接把name当作kv传了进去 
+console.log(a)  //{name: "bo", age: 18}
 ```
 ### Object.assign()
 ```js

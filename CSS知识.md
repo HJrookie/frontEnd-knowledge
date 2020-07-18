@@ -176,7 +176,7 @@ div.menu-bar li:hover > ul {
  伪类可以设置不同状态时元素的样式,以及指定奇数,或偶数个元素的样式  
  伪元素则是,可以创建一个新的元素,或者可以访问到元素中的内容的fist-letter,first-line.他有这样一种能力
 
-伪类和伪元素.
-块级元素,行内元素
+伪类和伪元素.  
+块级元素,行内元素  
 伪元素的content是啥. 默认应该是行内元素. height:0ox 可以去掉. 但是 content,以及diskplay:block,和clear不能去掉
   
