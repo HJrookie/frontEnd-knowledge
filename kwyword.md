@@ -81,3 +81,28 @@ Number.isNAN ，只对NAN有用
 ### ws,connnection,upgrade,websocket
 
 #### 除2商0,乘2小数为0
+
+
+#### 相对定位
+relative,相对元素原来的位置进行定位,设置偏移,不影响其他元素的位置    
+absolute: 父元素没有相对定位,或者绝对定位时,它时相对于根元素(html)定位的,  
+    父元素设置了相对定位,或者绝对定位,根据离自己最近的设置了相对定位,或者绝对定位的父元素进行定位,(最近的非static的父元素)  
+    详情见博客[定位相关](https://www.runoob.com/w3cnote/css-position-static-relative-absolute-fixed.html)
+
+
+### 不支持冒泡的事件 
+①focus     fbmouse,loadresize
+②blur  
+③mouseenter  
+④mouseleave  
+⑤load  
+⑥unload  
+⑦resize  
+> click,scrool支持
+
+### 在js中,设置css时,需要使用驼峰命名法. backgroundColor
+### 1/0  Infinity
+### 1 in [1]  //false,1要看成索引
+### 比较运算符 > 逻辑与/或运算符 > 赋值运算
+10 && 20 ==>20  
+10 || 30 ==>10

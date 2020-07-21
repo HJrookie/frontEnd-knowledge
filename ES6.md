@@ -46,3 +46,21 @@ var test =1;
 console.log(typeof test)  //Reference Error,..is not defined
 var test =1;
 ```
+
+
+### yield
+```js
+function* ge() {    //声明时需要添加*，普通函数内部不能使用yield关键字，否则会出错
+  yield '1';
+  yield '2';
+  yield '3';
+  return '4';
+}
+
+var a = ge();    //调用函数后不会运行，而是返回指向函数内部状态的指针
+a.next();    // { value: '1', done: false }   遇到yield暂停
+a.next();    // { value: '2', done: false }
+a.next();    // { value: '3', done: false }
+a.next();    // { value: '4', done: true}    函数执行完毕，返回done
+a.next();    // { value: undefined, done: true}  已经执行完毕，返回undefined
+```

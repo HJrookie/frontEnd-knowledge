@@ -22,12 +22,17 @@ action,需要dispatch
 2. beforeCreate,初始化注入和reactivity  
 3. created,  
 >此处先判断有没有el,没有的话,当vm,$mount(el)被调用时.再接着判断  
-> 有没有template选项.有的话,把template中的内容便一刀render 函数.  
+> 有没有template选项.有的话,把template中的内容编译到render 函数.  
+> 这里引入优先级问题: render函数选项 > template选项 > outer HTML.
 > 没有的话,编译el.outerHTML as template
 4. beforeMount和mount之间,创建**vm.$el 并且用编译好的模版替代el**
 ![vue生命周期](https://cn.vuejs.org/images/lifecycle.png)
 
-
+### beforeMount 和 Mounted之间.创建vm.$el,用这个$el去替代el选项的DOM
+#### beforeUpdate,updated
+更新的话,先更新数据,再更新视图,  
+beforeUpdate:数据更新了,视图没更新  
+updated: 视图重新渲染
 #### Vue生命周期 之 自我理解
 vue生命周期钩子:  
 ![不同时间数据的状态](https://s1.ax1x.com/2020/07/17/U6gp5j.png)  

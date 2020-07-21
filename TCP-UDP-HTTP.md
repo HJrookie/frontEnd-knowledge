@@ -84,3 +84,12 @@ Sec-WebSocket-Version: 13
 Origin: http://example.com
 
 ```
+
+
+### HTTP
+通用头部:  Cache-Control,Connection,Upgrade,Date,Pragma,Via,Transfer-Encoding,
+请求头部:  
+Accept,Accept-encoding,Accept-language,Authorization,Cookie,
+Range,Host,dnt,If-Match(Etag),If-modified-Since,If-None-Match,
+Proxy-Authorization,  
+Referer,User-Agent,Sec-Fetch-Dest,Sec-Fetch-Mode,Sec-Fetch-Site
