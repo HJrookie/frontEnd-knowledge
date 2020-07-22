@@ -20,7 +20,7 @@ IP,ICMP,ARP,RARP
 ####会话-表示-应用层
 HTTP,HTTPS,FTP,SFTP,DNS
 
-### 三栏布局 flwx
+### 三栏布局 flex
 
 justify-content: space-between  
 align-self/align-items  
@@ -106,3 +106,26 @@ absolute: 父元素没有相对定位,或者绝对定位时,它时相对于根�
 ### 比较运算符 > 逻辑与/或运算符 > 赋值运算
 10 && 20 ==>20  
 10 || 30 ==>10
+
+### js遍历对象
+1. for in  
+```js
+var obj = {1:1,b:2,c:3};
+for( let  i in obj){
+    console.log(i,obj[i])
+}
+// 方法2
+var obj = {1:1,b:2,c:2};
+let keys = Object.keys(obj),value = '';
+keys.forEach((item)=>{
+    value = value + item + ":" + obj[item] + ",";
+})
+console.log(value.slice(-1))
+// 方法3 用数组来做
+var obj = {1:1,b:2,c:2};
+let arr = [];
+for(let key in obj){
+    arr.push(key + ":" + obj[key])
+}
+console.log(arr.join())
+```

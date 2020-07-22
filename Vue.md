@@ -14,7 +14,7 @@ this.$routers.push({path:"",query:{}})中的path和配置文件匹配，参数�
 
 ### VueX
 mutation(变异的意思):需要commmit， 
-action,需要dispatch
+action,需要dispatch,里面都是调用了mutation
 
 
 ### Vue生命周期
@@ -28,7 +28,7 @@ action,需要dispatch
 4. beforeMount和mount之间,创建**vm.$el 并且用编译好的模版替代el**
 ![vue生命周期](https://cn.vuejs.org/images/lifecycle.png)
 
-### beforeMount 和 Mounted之间.创建vm.$el,用这个$el去替代el选项的DOM
+### beforeMount 和 Mounted之间.创建vm.$el,用我们刚编译好的HTML替换el指向的DOM节点
 #### beforeUpdate,updated
 更新的话,先更新数据,再更新视图,  
 beforeUpdate:数据更新了,视图没更新  
@@ -41,10 +41,11 @@ vue生命周期钩子:
 >data已经有了,message也有了.(message应该是data的一部分)  
 3. beforeMount时期: el已经有了,但是里面的值还没有替代,还是{{value}}  
 >data,和message还是有了的状态  
-4. mounted,el里面的值被替代,data,message不变
+4. mounted,el里面的值被替代,data,message不变  
 
+编译是啥意思: 就是把我们Template里面vue的写法,编译成一般的html文件  
 
-
+![中文详解生命周期](https://pics3.baidu.com/feed/d0c8a786c9177f3e668177cd4bfcf9c19e3d5676.png?token=e1704b12a0e009ba1c294d959ebcaa3e)
 
 
 
@@ -132,3 +133,7 @@ vue生命周期钩子:
 </html>
 66920938463463374607431768211455
 ```
+
+
+
+vue 兼容性
