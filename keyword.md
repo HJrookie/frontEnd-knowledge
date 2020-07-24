@@ -85,7 +85,7 @@ Number.isNAN ，只对NAN有用
 
 #### 相对定位
 relative,相对元素原来的位置进行定位,设置偏移,不影响其他元素的位置    
-absolute: 父元素没有相对定位,或者绝对定位时,它时相对于根元素(html)定位的,  
+absolute: 父元素static,它时相对于根元素(html)定位的,  
     父元素设置了相对定位,或者绝对定位,根据离自己最近的设置了相对定位,或者绝对定位的父元素进行定位,(最近的非static的父元素)  
     详情见博客[定位相关](https://www.runoob.com/w3cnote/css-position-static-relative-absolute-fixed.html)
 
@@ -129,3 +129,17 @@ for(let key in obj){
 }
 console.log(arr.join())
 ```
+
+### em大小事相对于自身的font-size的
+### rem相对于根元素html的字体大小
+### 对象迭代用in for(let i in obj)
+
+请求  安全  抓包  (http 1.0/1.1/1.1)
+
+### 浏览器并发,针对单一域名  
+2-8个之间  
+请求太多会出问题,减少浏览器请求  
+css sprites,将图标合成在一张图中,减少请求数量  
+将静态资源分布到不同的域名  
+### html文档被加载和解析完之后,DCL事件触发.不用等待样式表,图像,  
+子框架
