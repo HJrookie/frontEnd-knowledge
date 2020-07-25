@@ -145,3 +145,58 @@ HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样�
 HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题。
 
 [更多的详情见文章..这文章太长了,一下子看不完,脑子疼](https://juejin.im/entry/5981c5df518825359a2b9476)
+
+
+### HTTPS过程 
+1. 客户端生成随机数,TLS版本号,支持的加密方法,发送给server  
+2. server发送一个新的随机数,还有证书给client  
+3. client确认证书有效,生成一个新的随机数,用公钥加密,发给server  
+4. server用私钥解密收到的被加密过的随机数  
+5. 然后他们根据约定好的加密方法,用上面的三个随机数生成session key,加密接下来的对话  
+之后的对话使用session key来加密,这个是对称加密算法
+#### Session恢复
+session因为某种原因断了,可以用两种方法回复:  
+1. session ID.每次对话都有一个session ID,客户端把这个发给server,server看自己这里有,就继续会话  
+2. 缺点就是session Id只在一台服务器上有,如果多个服务器做lb的话,就不能恢复  
+3. 第二个方法: session ticket
+4. 客户端发给server一个session ticket,它是用ticket key加密过的session key,session ticket 来自server握手时,  
+这个session ticket是server发过来的,只能有服务端解密,  
+5. 服务端解密之后,就能拿到这次会话的一些信息
+
+### 防止报文被篡改
+原数据 --> 哈希算法 --> 摘要  --> 公钥加密 -->得到数字签名-->发给server   
+(原数据以及摘要都会发送给server)    
+server: 对元数据算摘要,用私钥解密,得到client传递的摘要,做对比,就知道是否修改了 
+但是感觉上面的过程比较慢  
+想了个新的方法: 原数据->des加密->hash摘要(连带着des加密后的数据发给server)  
+server用相同方法求hash,bijiaohash是否不同.原数据可以用des揭秘出来
+
+### HTTP2.0
+1. 性能更好，传输更快。  
+2. 新的二进制格式。HTTP 1.x的解析是基于文本，基于文本协议的格式解析存在天然缺陷，文本  
+的表现形式很多，不容易做到健壮。二进制只认0,1.
+3. 多路复用。连接共享。一个连接上可以有多个request，每个request对应一个id，server根据id  让不同的服务再去处理
+4. header压缩，http1.1的header中有大量信息，每次都要重复发送，2.0里面使用encoder减少需要传输  
+的header大小，并且双方各自cache header fields标，避免了重复header的传输，也减小了需要传输的大小  
+5. 服务端推送
+### 2.0多路复用，和1.1的pipeling
+pipeling: 多个请求排队,串行化,单线程处理.后面的请求等到前面请求收到响应了,才能发送.  
+如果这个请求超时了,后续请求被阻塞.即通常说的线头阻塞;  
+2.0: 在同一个连接上,并发,大家一起发请求,互不影响.
+### 服务端推送 
+服务端推送能把客户端所需要的资源伴随着index.html一起发送到客户端，省去了客户端重复请求的步骤。  
+正因为没有发起请求，建立连接等操作，所以静态资源通过服务端推送的方式可以极大地提升速度。具体  
+正常的过程: 
+1. client -> server 要index.html
+2. server 发给了client
+3. client -> 要main.js,
+4. server发给了client
+服务端推送: 
+1. client -> server 要index.html
+2. server 发给了client,main,js也给你吧.  
+### 头部压缩 
+假定一个页面有100个资源需要加载（这个数量对于今天的Web而言还是挺保守的）, 而每一次请求都有1kb的消息头（这同样也并不少见，因为Cookie和引用等东西的存在）, 则至少需要多消耗100kb来获取这些消息头。HTTP2.0可以维护一个字典，差量更新HTTP头部，大大降低因头部传输产生的流量
+
+# [上述http不同版本差异详见](https://juejin.im/entry/5981c5df518825359a2b9476)
+
+### String.fromCharCode()参数是数字
