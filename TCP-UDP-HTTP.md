@@ -19,7 +19,6 @@
 TCP: 面向连接的,三次握手,四次挥手,保证数据正确以及数据顺序,要求资源较多,面向字节流 只支持1对一的.,  
 UDP: 无连接,尽最大努力交付的,可能会丢包,顺序会乱,需求资源少,面向报文,支持1对1,1对多,多对1,多对多
 
-?JfEHg2tDL+rJ>%
 
 
 ### HTTPS
@@ -70,8 +69,8 @@ xmlhttp.send();
 
 ### webSocket()
 对于HTTP 1.0来说,一个request对应一个response.这个请求就结束了  
-对于HTTP 1.1增加了keep-alive属性,这样子可以建立一个HTTP链接，发送多个　　
-请求，接受多个response.并且这里的HTTP请求只能由client发出.  
+对于HTTP 1.1增加了keep-alive属性,这样子可以建立一个HTTP链接，  
+发送多个请求，接受多个response.并且这里的HTTP请求只能由client发出.  
 #### ws来了.ws和http协议有交集,但是也有不同之处
 ```js
 GET /chat HTTP/1.1
@@ -99,12 +98,13 @@ Origin: http://example.com
 1.2 no-cache,客户端缓存,每次都要向源服务器验证  
 1.3 public,可以被任何对象缓存(即使是通常不可缓存的内容.例如  
 >1.没有max-age指令或Expires消息头,2. 该响应对应的请求方法是post)  
+
 1.4 private,只能被单个用户缓存,不能作为共享缓存.例如用户本地浏览器的缓存.  
 2. 到期时间设置  
-2.1 max-age = <seconds>,设置缓存最大存储时间,超出后认为过期.相对于请求的事件来算的  
-2.2 s-maxage = <sec>,覆盖max-age或者Expires头，但是仅适用于共享缓存(private缓存会忽略它)  
-2.3 max-stale[=<sec>],愿意接受过期的资源,可设置一个可选的秒数,响应不能超过给定时间  
-2.4 min-fresh=<sec>,客户端希望获取一个在指定时间内保持最新状态的响应 
+2.1 max-age = \<seconds\>,设置缓存最大存储时间,超出后认为过期.相对于请求的事件来算的  
+2.2 s-maxage = \<sec>\,覆盖max-age或者Expires头，但是仅适用于共享缓存(private缓存会忽略它)  
+2.3 max-stale[=\<sec\>],愿意接受过期的资源,可设置一个可选的秒数,响应不能超过给定时间  
+2.4 min-fresh=\<sec\>,客户端希望获取一个在指定时间内保持最新状态的响应 
 ##### Pragma  
 HTTP/1.0里的,用来向后兼容只支持HTTP/1.0 协议的缓 存服务器(那时候没有Cache-Control(http 1.1))  
 >常用值: no-cache(强制要求缓存服务器在返回缓存的版本之前,讲请求提交到源服务器进行验证)
