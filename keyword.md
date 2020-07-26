@@ -62,8 +62,8 @@ margin: 0 auto;
 #### ExternalInterface,flash相关
 
 ### 元素高度
-x=> scrool/inner => offset
-inner网页显示的区域,包含滚动条的,outer就是窗口大小
+x=> scroll/inner => offset  
+inner网页显示的区域,包含滚动条的,outer就是窗口大小  
 空sino 记住sino
 
 #### indexOf
@@ -91,7 +91,8 @@ absolute: 父元素static,它时相对于根元素(html)定位的,
 
 
 ### 不支持冒泡的事件 
-①focus     fbmouse,loadresize
+**fbmouse,loadresize**
+①focus  
 ②blur  
 ③mouseenter  
 ④mouseleave  
@@ -105,7 +106,8 @@ absolute: 父元素static,它时相对于根元素(html)定位的,
 ### 1 in [1]  //false,1要看成索引
 ### 比较运算符 > 逻辑与/或运算符 > 赋值运算
 10 && 20 ==>20  
-10 || 30 ==>10
+10 || 30 ==>10  
+[运算符优先级](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
 
 ### js遍历对象
 1. for in  
@@ -130,7 +132,7 @@ for(let key in obj){
 console.log(arr.join())
 ```
 
-### em大小事相对于自身的font-size的
+### em大小是相对于自身的font-size的
 ### rem相对于根元素html的字体大小
 ### 对象迭代用in for(let i in obj)
 

@@ -31,7 +31,8 @@ setTimeout(function timeout() {
 就算有多个nextTick还是会在人物队列之前执行,
 
 ## 微任务,宏任务
-macrotasks: setTimeout, setInterval, setImmediate, I/O, UI rendering
+macrotasks: setTimeout, setInterval, setImmediate, I/O, UI rendering  
+
 microtasks: process.nextTick, Promise, **MutationObserver**  
 #### 执行顺序 
 先把微任务里面的执行完,就算里面东西很多,事儿很多.promise.then会一直在微任务中,nextTIck也是  
