@@ -44,7 +44,7 @@ console.log(typeof test)  //undefined
 var test =1;
 // 如果换成let
 console.log(typeof test)  //Reference Error,..is not defined
-var test =1;
+let test =1;
 ```
 
 
