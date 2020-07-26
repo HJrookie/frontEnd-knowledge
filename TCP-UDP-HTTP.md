@@ -101,7 +101,7 @@ Origin: http://example.com
 
 1.4 private,只能被单个用户缓存,不能作为共享缓存.例如用户本地浏览器的缓存.  
 2. 到期时间设置  
-2.1 max-age = \<seconds\>,设置缓存最大存储时间,超出后认为过期.相对于请求的事件来算的  
+2.1 max-age = \<seconds\>,设置缓存最大存储时间,超出后认为过期.相对于请求的时间来算的  
 2.2 s-maxage = \<sec>\,覆盖max-age或者Expires头，但是仅适用于共享缓存(private缓存会忽略它)  
 2.3 max-stale[=\<sec\>],愿意接受过期的资源,可设置一个可选的秒数,响应不能超过给定时间  
 2.4 min-fresh=\<sec\>,客户端希望获取一个在指定时间内保持最新状态的响应 
@@ -129,11 +129,11 @@ HTTP 304响应,客户端发一个条件请求,请求头里带了If-Modified-Sinc
 缓存 部分 host 长链接 状态码 
 1. 缓存处理.1.0中主要是用header里的If-Modified-SInce,Expires来作为缓存判断的标准,1.1引入了更多的缓存控制策略,Etag,If-Unmodified-Since,If-Match,If-None-Match  
 2. 带宽优化,以及网络连接的使用.客户端可以请求对象的某一部分,1.1中请求头中多了range,可以只请求资源的一部分.返回206,Partial Content  
-3. 错误通知的管理.1.1中多了24得错误状态响应码;410 Gone.    
+3. 错误通知的管理.1.1中多了24个错误状态响应码;410 Gone.    
 4. Host头处理,1.0中认为每台服务器中都绑定唯一的ip地址,因此,  
    请求头url中没有主机名.但是由于虚拟主机技术的的发展,一台物理  
    服务器上可以有多个虚拟主机,并且共享一个IP地址.HTTP 1.1得请求消息,  和相应详细都应支持Host头域,否则返回400  
-5. 长连接,keep_alive,和请求的流水线处理(Pipelining).在要给tcp连接上可以传送多个http请求和响应,减少了建立和关闭连接的小号和延迟.1.1中默认开启connection,keep-alive
+5. 长连接,keep_alive,和请求的流水线处理(Pipelining).在一个tcp连接上可以传送多个http请求和响应,减少了建立和关闭连接的消耗和延迟.1.1中默认开启connection,keep-alive
    
 
 ### HTTPS 和 HTTP
@@ -177,7 +177,7 @@ server用相同方法求hash,bijiaohash是否不同.原数据可以用des揭秘�
 的表现形式很多，不容易做到健壮。二进制只认0,1.
 3. 多路复用。连接共享。一个连接上可以有多个request，每个request对应一个id，server根据id  让不同的服务再去处理
 4. header压缩，http1.1的header中有大量信息，每次都要重复发送，2.0里面使用encoder减少需要传输  
-的header大小，并且双方各自cache header fields标，避免了重复header的传输，也减小了需要传输的大小  
+的header大小，并且双方各自cache header fields表，避免了重复header的传输，也减小了需要传输的大小  
 5. 服务端推送
 ### 2.0多路复用，和1.1的pipeling
 pipeling: 多个请求排队,串行化,单线程处理.后面的请求等到前面请求收到响应了,才能发送.  
