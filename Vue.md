@@ -1,3 +1,13 @@
+### this.$nextTick(()=>{})
+一般来说,我们更新一个数据之后,比如重新赋值,如果下一步的操作需要用到这个更新后的值,  
+可以把这个操作放到this.$nextTick()里面去.  
+#### 原因
+vue里面DOM更新是异步执行的,只要间听到数据变化,vue将开启一个队列,把同一个event loop  
+中发生的所有数据变更放到队列里,如果一个watcher被多次触发,只会被推入队列一次.  
+这样可以避免不必要的计算和DOM操作. 在下一次时间循环中,vue刷新队列,并执行实际工作.  
+Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替
+
+
 ### router传参
 可参考该网页: [别人写的博客](https://www.cnblogs.com/beka/p/8583924.html)
 #### 1. path   
@@ -15,7 +25,107 @@ this.$routers.push({path:"",query:{}})中的path和配置文件匹配，参数�
 ### VueX
 mutation(变异的意思):需要commmit， 
 action,需要dispatch,里面都是调用了mutation
+vuex中的state使用的时候,一般是挂载到computed属性中,如果写到data里,数据改变的时候,不能被监听到;  
+当然也可以watch $store去解决这个问题,  
+#### mapState
+```js
+// 引入vuex的文件中
+import { mapState } from 'vuex';
 
+computed:{
+    ...mapState('index', ['regions', 'selectedRegion', 'showRegionSelect']),
+    //或者这样  
+    fn1(){ return ...},
+    fn2(){ return ...},
+    fn3(){ return ...}
+    -----
+    //再维护vuex
+    ...mapState({  //这里的...不是省略号了,是对象扩展符
+        count:'count'
+    })
+}
+
+// store.js中
+import Vue from 'vue';
+import Vuex from 'vuex';
+import region from '../api/regionService/regionReq';
+
+Vue.use(Vuex);
+
+export const INIT_REGION = 'INIT_REGION';
+export const INIT_SELECTED_REGION = 'INIT_SELECTED_REGION';
+export const UPDATE_SELECTED_REGION = 'UPDATE_SELECTED_REGION';
+export const INIT_SHOW_REGION_SELECT = 'INIT_SHOW_REGION_SELECT';
+export const UPDATE_SHOW_REGION_SELECT = 'UPDATE_SHOW_REGION_SELECT';
+
+export default {
+  namespaced: true,
+  state: {
+    regions: [], // region列表
+    selectedRegion: localStorage.getItem('selected-region') || '', // 当前选中的region的regionId
+    showRegionSelect: true, // 是否显示选择region框
+  },
+  actions: {
+    async initApp({ commit, dispatch }) {
+      commit(INIT_SHOW_REGION_SELECT);
+      // 初始化region列表
+      await dispatch('initRegion');
+      // 初始化选中的regionId
+      commit(INIT_SELECTED_REGION);
+    },
+    async initRegion({ commit }) {
+      // 如果用户缓存中不存在region列表信息
+      if (!sessionStorage.getItem('region-list')) {
+        const params = {
+          current: 1,
+          size: 100,
+        };
+        await region
+          .getRegionList(params)
+          .then(res => {
+            if (res.Status === 'Success' && res.Detail.Records.length > 0) {
+              sessionStorage.setItem(
+                'region-list',
+                JSON.stringify(res.Detail.Records)
+              );
+              commit(INIT_REGION, res.Detail.Records);
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      } else {
+        // 否则从用户缓存获取
+        commit(INIT_REGION, JSON.parse(sessionStorage.getItem('region-list')));
+      }
+    },
+    updateSelectedRegion({ commit }, payload) {
+      localStorage.setItem('selected-region', payload);
+      commit(UPDATE_SELECTED_REGION, payload);
+    },
+    updateShowRegionSelect({ commit }, payload) {
+      commit(UPDATE_SHOW_REGION_SELECT, payload);
+    },
+  },
+  mutations: {
+    [INIT_REGION](state, payload) {
+      state.regions = payload;
+    },
+    [INIT_SELECTED_REGION](state) {
+
+    },
+    [UPDATE_SELECTED_REGION](state, payload) {
+      state.selectedRegion = payload;
+      window.location.reload();
+    },
+    [INIT_SHOW_REGION_SELECT](state) {
+      state.showRegionSelect = true;
+    },
+
+  },
+};
+
+```
 
 ### Vue生命周期
 1. 最开始初始化事件和生命周期  

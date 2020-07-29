@@ -1,4 +1,4 @@
-### ... 运算符
+### ... 扩展运算符
 这个运算符用在数组或者对象里
 ```js
 //1. 数组 (直接跟字符串)
@@ -12,10 +12,15 @@ console.log(array)  //[1, 2, 3, 4, 5, "h", "e", "l", "l", "o"]
 var name = "bo";
 var a={...name,age:18}  //这里等同于 var a={..."bo",age:18}
 console.log(a)  //{0: "b", 1: "o", age: 18}
-// 例子2
+// 例子2,混合变量变量的值,不用....运算符
 var name = "bo";
 var a={name,age:18}  //这里相当于直接把name当作kv传了进去 
 console.log(a)  //{name: "bo", age: 18}
+// 例子3,混合对象的时候要用扩展运算符
+var a= {'a':1,"b":2};
+var b={'bb':22};
+var c={...a,...b};
+c;  // {a: 1, b: 2, bb: 22}
 ```
 ### Object.assign()
 ```js
