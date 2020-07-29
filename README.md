@@ -1,2 +1,2 @@
 # frontEnd-knowledge
-record and help myself to review 
+record something unknown and help myself to review 
