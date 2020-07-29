@@ -97,7 +97,7 @@ display:flex;
 [水平居中对齐](https://jsfiddle.net/areYouOk/0q581jd3/42/)
 
 
-### 左侧固定宽度,右侧自适应
+### 左侧固定宽度,右侧自适应(两栏布局)
 [左侧固定宽度,右侧宽度自适应](https://jsfiddle.net/areYouOk/tkdwn639/)
 方法1: 关键点:  
 ```css
@@ -128,8 +128,53 @@ display:flex;
   margin-left:220px;
 }
 ```
-[左侧浮动,右侧宽度自适应](https://jsfiddle.net/areYouOk/tkdwn639/7/)
+[左侧浮动,右侧宽度自适应](https://jsfiddle.net/areYouOk/tkdwn639/7/)  
+方法3:  使用flex布局来实现
+[justify-content:space-between](https://jsfiddle.net/areYouOk/7L2kv46a/20/)
+```css
+.left{
+  width:200px;
+  background-color:#ddd;
+  min-height:300px;
+}
 
+.right{
+  background-color:#aaa;
+  height:400px;
+  flex-grow:1  //这里让右边占更多地方
+}
+
+.father{
+  display:flex;
+  justify-content:space-between;
+}
+```
+html如下所示
+```html
+<div class="father">
+  <div class = "left">left</div>
+  <div class= "right ">right</div>
+</div>
+```
+
+4.第四种,两侧浮动.右侧宽度用calc计算   
+```css
+.left{
+  float:left;
+  width:200px;
+  background-color:#ddd;
+  min-height:300px;
+}
+
+.right{
+    float:right;
+  width:calc(100% - 200px);
+  background-color:#aaa;
+  height:400px;
+
+}
+```
+[calc计算宽度](https://jsfiddle.net/areYouOk/7L2kv46a/17/)
 
 ### Flex布局
 布局的传统解决方案:  
