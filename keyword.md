@@ -133,6 +133,10 @@ console.log(arr.join())
 ```
 
 ### em大小是相对于自身的font-size的
+[em单位详解](https://jsfiddle.net/areYouOk/9c7dtxgz/6/)
+em计算是相对于当前dom的font-size来算的,如果当前dom没有显式声明  
+font-size的大小,它会继承父元素的font-size.如果设置他的margin,padding为1em,font--size为0.5em,此时  
+margin和padding会相对于font-size自身来进行计算
 ### rem相对于根元素html的字体大小
 ### 对象迭代用in for(let i in obj)
 

@@ -88,3 +88,17 @@ import default as getArea from './circle'
 
 import getArea from './circle'
 ```
+
+
+### AMD
+1. 定义模块  
+```js
+define(['package/lib'],function(lib){
+    function foo(){
+        lib.log('hello world');
+    }
+    return {
+        foo:foo
+    };
+})
+```
