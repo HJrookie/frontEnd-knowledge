@@ -1,1 +1,2 @@
- ssh-add C:Users11814.sshgithub-sshid_rsa
+ ssh-add "C:\Users\11814\.ssh\github-ssh\id_rsa"
+ // 这句报错,执行ssh-agent bash
