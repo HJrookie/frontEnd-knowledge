@@ -1,0 +1,232 @@
+### ts是什么
+简单来说,js超集,多了类型系统,和对ES6的支持,由微软开发,在github上开源;  
+### 为啥要用
+1. vue3都用了  
+2. 类型系统很好,静态类型检查(只是在编译时),可以避免很多低级错误  
+3. 增强了编辑器,和IDE的功能,包括代码不全,借口提示,跳转到定义,代码重构等;  
+### ts的一些值得注意的地方
+1. 编译出问题了,还是会生成js,在tsconfig.json 中配置 noEmitOnError就可以  
+
+
+### 原始数据类型(主要讲bool,string,num,null,undef)
+#### boolean
+注意和包装器对象区分,后者必须用new  
+```ts
+let isCreated: boolean = false;
+```
+#### number
+```ts
+// 16进制
+let hexLiteral: number = 0xf00d;
+// ES6 中的二进制表示法
+let binaryLiteral: number = 0b1010;
+// ES6 中的八进制表示法
+let octalLiteral: number = 0o744;
+```
+#### string
+```ts
+let myName: string = 'Tom';
+let myAge: number = 25;
+
+// 模板字符串
+let sentence: string = `Hello, my name is ${myName}.
+I'll be ${myAge + 1} years old next month.`;
+```
+
+
+#### 空值
+js中没有空值,在ts中,可以用void表示没有返回值的函数;
+```ts
+function test(): void{
+    console.log("a simple test")
+}
+// 声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：
+
+let unusable: void = undefined;
+```
+#### Null 和 Undefined
+**undefined 和 null**是所有类型的子类型;可以赋值给所有其他的类型;
+```ts
+// 这样不会报错
+let num: number = undefined;
+// 这样也不会报错
+let u: undefined;
+let num: number = u;
+```
+
+### 任意值
+普通类型在赋值的时候不能改变类型,但是any可以;声明时未指定类型,且未赋值的话,默认就是any;
+并且any类型的值,可以访问任何属性和方法.它的属性,或者方法的返回值都是any;
+```ts
+// 都是ok的
+let anyThing: any = 'hello';
+console.log(anyThing.myName);
+console.log(anyThing.myName.firstName);
+
+let anyThing: any = 'Tom';
+anyThing.setName('Jerry');
+anyThing.setName('Jerry').sayHello();
+anyThing.myName.setFirstName('Cat');
+```
+### 类型推论
+**ERROR**
+```ts
+let myFavoriteNumber = 'seven';  //自动类型推论
+myFavoriteNumber = 7;
+
+// index.ts(2,1): error TS2322: Type 'number' is not assignable to type 'string'.
+```
+### 联合类型
+一个值可能有多种类型.赋值时会自动类型推论;    
+```ts
+let myFavoriteNumber: string | number;  //使用|分割
+myFavoriteNumber = 'seven';
+myFavoriteNumber = 7;
+```
+#### 访问联合类型的属性或方法
+>当 TypeScript 不确定一个联合类型的变量到底是哪个类型的时候，我们只能访问此联合类型的所有类型里共有的属性或方法
+```ts
+function getLength(something: string | number): number {
+    return something.length;
+}
+
+// index.ts(2,22): error TS2339: Property 'length' does not exist on type 'string | number'.
+//   Property 'length' does not exist on type 'number'.
+length不是共有的.toString是可以
+```
+### 对象的类型——接口
+一般来说,代表一种行为,一种能力,一种特性;  
+ts里面还代表了对象的基本的shape;
+#### 简单的例子
+```ts
+interface Person {
+    name: string;
+    age: number;
+}
+// 这里多属性,或者少属性都不行
+let tom: Person = {
+    name: 'Tom',
+    age: 25
+};
+```
+#### 可选属性(可以没有,但不能添加未定义的属性)
+```ts
+interface Person {
+    name: string;
+    age?: number;
+}
+// ok
+let tom: Person = {
+    name: 'Tom'
+};
+// ok
+let tomm: Person = {
+    name: 'Tom',
+    age: 25,
+    // 这里多别的属性是不行的
+};
+```
+##### 任意属性
+**一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集**
+例如string,那么确定属性,可选属性,必须是string,null,undefined
+```ts
+interface Person {
+    name: string;
+    age?: number;
+    [propName: string]: string;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    age: 25,
+    gender: 'male'
+};
+
+// index.ts(3,5): error TS2411: Property 'age' of type 'number' is not assignable to string index type 'string'.
+// index.ts(7,5): error TS2322: Type '{ [x: string]: string | number; name: string; age: number; gender: string; }' is not assignable to type 'Person'.
+//   Index signatures are incompatible.
+//     Type 'string | number' is not assignable to type 'string'.
+//       Type 'number' is not assignable to type 'string'.
+```
+**一个接口中只能定义一个任意属性。如果接口中有多个类型的属性，则可以在任意属性中使用联合类型**
+```ts
+interface Person {
+    name: string;
+    age?: number;
+    // 意思: 属性名必须是string,或其子集;对应的值,可以是string,number及其子集
+    [propName: string]: string | number;
+}
+
+let tom: Person = {
+    name: 'Tom',
+    age: 25,
+    gender: 'male'
+};
+```
+#### 只读属性
+**一些字段只能在创建的时候被赋值，那么可以用 readonly 定义只读属性**
+```ts
+interface Person {
+    readonly id: number;
+    name: string;
+    age?: number;
+    [propName: string]: any;
+}
+```
+### 数组类型
+```ts
+let arr: number[] = [1,2,3,4,5]  //里面不能有其它类型
+arr.push('8')  // error 是不允许的
+// 数组泛型
+let arr: Array<number> = [1,2,3,4,5]
+```
+#### 用接口表示数组
+```ts
+interface NumberArray {
+    [index: number]: number;
+}
+let fibonacci: NumberArray = [1, 1, 2, 3, 5];
+```
+NumberArray 表示：只要索引的类型是数字时，那么值的类型必须是数字。  
+虽然接口也可以用来描述数组，但是我们一般不会这么做，因为这种方式比前两种方式复杂多了。  
+不过有一种情况例外，那就是它常用来表示类数组。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
