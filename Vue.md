@@ -11,13 +11,13 @@ Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserve
 ### router传参
 可参考该网页: [别人写的博客](https://www.cnblogs.com/beka/p/8583924.html)
 #### 1. path   
-router配置中，写 path:"/user/:id",调用时： this.$router.push(&nbsp;{&nbsp;path&nbsp;:&nbsp;${id}&nbsp;})，刷新后参数还在  
+router配置中，写 path:"/user/:id",调用时： this.`$router`.push(&nbsp;{&nbsp;path&nbsp;:&nbsp;${id}&nbsp;})，刷新后参数还在,这个参数会体现在url里,通过this.`$route`.params.id来获取    
 #### 2. 根据name匹配，用params传参数，刷新后参数丢失  
-router配置中，写path：“/...”,name:"detail"  
-调用时， this.$router.push({name:detail,params:{id:1}}),  
-在子页面中通过this.$route.params.id  
+router配置中，写path：“/test”,name:"detail"  
+调用时， this.`$router`.push({name:detail,params:{id:1}}),  
+在子页面中通过this.`$route`.params.id获取id的值  
 #### 3.通过path匹配，query传参，参数在uri里
-this.$router.push({path:"",query:{}})中的path和配置文件匹配，参数通过url传递，在this.$route.query.来获取
+this.`$router`.push({path:"/test",query:{}})中的path和配置文件匹配，参数通过url传递，在this.`$route`.query.来获取
 
 
 
