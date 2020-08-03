@@ -1,4 +1,9 @@
-var fff = [1, 1, 2, 3, 5];
-for (var i in fff) {
-    console.log(fff[i]);
+function reverse(x) {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    }
+    else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
 }
+console.log(reverse(1241412));

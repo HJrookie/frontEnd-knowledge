@@ -10,7 +10,7 @@ Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserve
 
 ### router传参
 可参考该网页: [别人写的博客](https://www.cnblogs.com/beka/p/8583924.html)
-#### 1. path   
+#### 1. path (router的动态路由匹配)  
 router配置中，写 path:"/user/:id",调用时： this.`$router`.push(&nbsp;{&nbsp;path&nbsp;:&nbsp;${id}&nbsp;})，刷新后参数还在,这个参数会体现在url里,通过this.`$route`.params.id来获取    
 #### 2. 根据name匹配，用params传参数，刷新后参数丢失  
 router配置中，写path：“/test”,name:"detail"  
