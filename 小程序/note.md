@@ -57,7 +57,101 @@ app.json就是个全局配置文件,里面有所有的页面,以及字体,颜色
 添加或者删除页面时,需要同步修改这里的page
 单个页面的风格配置(index.json)可以覆盖全局的风格.  
 
-app.wxss定义全局样式,页面的wxss中定义特有的样式 
+app.wxss定义全局样式,页面的wxss中定义特有的样式  
+在app.json里面pages数组中添加一个路径,然后保存,就会自己生成相应的文件  
+json的key一定要加双引号  
+json的值只能是,boolean,string,number,null,array,obj**其他不行**
+### html相关
+wxml.wx markup language.里面有view,相当于div,text相当于span,  
+image相当于img  
+每个小程序组件都默认提供了一些非常nice的属性,以image为例子:  
+如果希望图片加载完,做一件事,可以使用bindload属性,懒加载使用  
+lazy-load属性;
+### css(wxss)
+:hover不支持
+单位: rpx(responsive pixel)  
+规定屏幕宽为750rpx 
+px换算rpx (750/屏幕宽度)  
+iPhone6的宽度是 375px,所以1px = 2rpx
+#### 样式导入
+以前用link,现在wxml和wxss放在一个目录下就会自动引入样式,  
+@import可以引入外部样式  
+```css
+在想要引样式的地方写  
+@import "../../common.wxss";
+```
+### 数据绑定
+例子:  
+html  
+```html
+<text class="{{defaultClass}}" style="color:#fff;background:{{backgroudColor}};display:block">{{myName}}</text>
+<button bindtap="setName">点我</button>
+```
+```js
+const app = getApp()
+
+Page({
+    // 定义数据
+  data: {
+    myName: '我是谁？',
+    defaultClass: 'my-name',
+    backgroudColor: '#e4393c'
+  },
+  setName() {
+      // 这里修改数据
+    this.setData({
+      myName: "喷火龙",
+      defaultClass:'my-name-new',
+      backgroudColor:'#bbded6'
+    })
+  }
+})
+
+```
+text中支持简单的计算:  
+```js
+<text>{{"听风是风"+str}}</text>
+<text>听风是风{{str}}</text>  两种都可以,三元表达式也可以
+```
+#### 条件逻辑
+wx:if,类似 v-if  
+```html
+<text wx:if="{{bool}}">我叫听风是风</text>  //false,组件不会加载  
+还有wx:elif,wx:else, 还有hidden  
+wx:if,如果false,不渲染  
+hidden:,为真,还是会渲染,display为none
+
+// 结合block控制多个组件的渲染,block就是容器
+<block wx:if="{{bool}}">
+	<text>我叫听风是风，</text>
+	<text>听风是风你加点油好不好，真的是！</text>
+</block>
+
+
+```
+v-for例子:  
+```js
+<view wx:for="{{array}}">
+  {{index}}: {{item}}
+</view>
+// index,item可以改名字
+<view wx:for="{{array}}" wx:for-index="a" wx:for-item="b">
+  {{a}}: {{b}}
+</view>
+```
+
+wx:key = "id",值可以是个字符串,代表item中的属性,且属性的值在整个数组中是独一无二的;  
+或者 = "this",代表item本身,需要item本身是一个独一无二的
+
+#### 各个组件大概看一下
+
+
+
+
+
+
+
+
 
 
 
