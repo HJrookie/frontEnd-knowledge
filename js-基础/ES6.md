@@ -69,3 +69,68 @@ a.next();    // { value: '3', done: false }
 a.next();    // { value: '4', done: true}    函数执行完毕，返回done
 a.next();    // { value: undefined, done: true}  已经执行完毕，返回undefined
 ```
+### let const
+
+
+### promise
+.then创建了一个新的promise,里面的东西,会被放到微任务队列里  
+promise.all 等所有都成功,或者某个失败,全部失败  
+promise.race 等最先成功或者失败的  
+
+### 获取根元素的font-size
+```js
+let html = document.querySelector('html')
+let fontSize = getComputedStyle(html)['font-size']
+```
+
+
+### 箭头函数
+```js
+var ff = ()=> ({a:1}) ;  //这里如果要返回一个对象,需要加括号,不然被认为是代码块
+ff();
+```
+注意点:  
+this --arguments--new --yield  
+1. this对象是定义生效时所在的对象,不是使用时所在的对象  
+2. 不可以当作构造函数,不能new    
+3. 不能用arguments参数,可以用rest参数代替(...rest)   
+```js
+var test = (...rest)=>{
+    console.log(rest)
+}
+test(1,2,3)  //(3) [1, 2, 3]
+``` 
+4. 不可以使用yield,不能用作Generator函数  
+
+this指向的固定化，并不是因为箭头函数内部有绑定this的机制，  
+实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的  
+
+this。正是因为它没有this，所以也就不能用作构造函数。
+也不能通过call,apply,bind改变指向
+
+
+#### 不适用场景
+1. 不适合在对象里用,对象不构成单独的作用域,this指向的是window  
+```js
+var a = 1
+var test = () => {
+    console.log(this.a)
+}
+var obj = {
+    a: 2,
+    test
+}
+obj.test()        //结果是 1
+```
+2. 需要动态this的时候，也不应使用箭头函数  
+
+#### 尾调用优化
+```js
+function f(x){
+  return g(x);
+}
+// 这就是尾调用,别的都不是,不用一定在尾部,最后一步执行就可以
+```
+
+
+

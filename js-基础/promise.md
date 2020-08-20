@@ -35,4 +35,11 @@ reject
 
 ```
 上面的自上往下执行,先打印出promise,在执行.then里的回调,如果一个promise不返回一个东西,或者不resolve,或者reject的话,那么下一个.then接收到的参数是undefined
-promise 
+promise   
+
+### 注意的点
+promise.race是有一个resolve,返回的那个promise就resolve  
+实际上返回的promise的状态取决于最先被resolve,或者reject的promise  
+promise.all 中任意一个被拒绝.其他所有都立即被拒绝  
+promise.all 会等到所有都resolve之后,再返回  
+.then方法会创建,并且返回一个新的promise,会随着前面Promise的解决而解决,

@@ -98,20 +98,24 @@ display:flex;
 
 
 ### 左侧固定宽度,右侧自适应(两栏布局)
-[左侧固定宽度,右侧宽度自适应](https://jsfiddle.net/areYouOk/tkdwn639/)
+[左侧固定宽度,右侧宽度自适应](https://jsfiddle.net/areYouOk/tkdwn639/11/)
 方法1: 关键点:  
 ```css
-#left{
-  position:absolute;
-  left:20px;
-  top:20px;
-  width:200px;
+#sidebar {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 200px;
+  background-color: gray;
 }
-#right{
-  padding-left:250px;
-  padding-top:20px;
-  padding-right:20px;
+
+#content {
+  background-color: #ddd;
+  padding-top: 25px;
+  padding-right: 20px;
+  margin-left: 260px
 }
+
 ```
 方法2:  
 ```css
