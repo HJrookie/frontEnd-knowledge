@@ -57,7 +57,10 @@ node是怎么找到模块的位置的?
 ES6 Modules的核心思想,和CommonJS不同,  
 CommonJS是运行时才确定引入,然后执行这个模块,相当于调用一个函数,返回一个对象,就这么简单;  
 但是ES6 Modules是语言层面的,导入导出是
-
+export和export default的区别:  
+1. export可以有多个,default只能有一个  
+2. export出去的,import要加{},名字不能改,可以用as来改  
+3. export default,import的时候可以随便写name
 ### 2.1 第一种定义,引用,和标识的方法
 ```js
 // circle.js   定义一个模块
@@ -65,6 +68,7 @@ export const PI = 3.14
 export let radius = 5
 export let getArea = (r) => PI * r * r
 
+或者 export {PI,radius,getArea}
 // 2.2 引用模块
 import {PI, radius, getArea} from './circle'
 

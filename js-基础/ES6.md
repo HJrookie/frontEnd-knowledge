@@ -69,7 +69,42 @@ a.next();    // { value: '3', done: false }
 a.next();    // { value: '4', done: true}    函数执行完毕，返回done
 a.next();    // { value: undefined, done: true}  已经执行完毕，返回undefined
 ```
+
+### 一些琐碎的
+不要在块级作用域中声明函数,情况比较复杂.  
+es6里的会计作用域必须有大括号,对象不是块级作用域.  
+[]==false; ![] == false; 都是true;  
+var  function let const  import  class,六种方式定义变量.  
+var,function声明的变量,依旧是顶层变量,可通过window访问到;  
+let,const的话,不能通过window访问到;  
+js中都有一个顶层对象,browser中是window,node是global  
+
+
 ### let const
+tdz;
+### 解构赋值  
+let [head, ...tail] = [1, 2, 3, 4];  
+解构不成功  或者没取到值  就是undefined  
+对于对象,或者数组的解构赋值,都可以有默认值,在对应的值是undefined时.  
+function test(x,y=x) 是可以的.  (x=y,y=1)是不行的.  
+数组解构按顺序,对象按照key,不看顺序,  
+对象解构:  
+{a,b} 是缩写 实际{a:a,b:b}
+＝可以认为是解构赋值  或者赋值
+
+#### 很特别的用法,可以获取对象上的某个值
+```js
+对象的解构赋值，可以很方便地将现有对象的方法，赋值到某个变量。
+
+// 例一
+let { log, sin, cos } = Math;
+
+// 例二
+const { log } = console;
+log('hello') // hello
+上面代码的例一将Math对象的对数、正弦、余弦三个方法，赋值到对应的变量上，使用起来就会方便很多。例二将console.log赋值到log变量。
+
+```
 
 
 ### promise
