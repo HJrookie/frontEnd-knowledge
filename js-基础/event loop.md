@@ -131,3 +131,40 @@ function sleep(delay) {
 // 1 4 2 3 6 7 8 5 
 ```
 
+
+### 比较难的一个例子
+```js
+console.log(1)
+setTimeout(()=>{console.log(2)},0)
+new Promise((resolve,reject)=>{
+    console.log(3)
+    setTimeout(()=>{console.log(8)},0)
+    new Promise((resolve,reject)=>{
+       setTimeout(()=>{console.log(9)},0)
+    console.log(7)
+    resolve()
+    console.log(11)
+})
+.then(()=>{
+    console.log(10)
+})
+ console.log(12)
+    resolve()
+ console.log(13)
+})
+.then(()=>{
+    console.log(4)
+})
+setTimeout(()=>{console.log(5)},0)
+console.log(6)
+
+
+
+
+ 1 3 7 11 12 13 6 10 4 2 8 9 5 
+ // .then里的必须resolve才能执行  
+ new Promise里的同步代码立即执行.  
+ 里面的setTimeout会被放到宏任务队列里,.then里的被放到微任务队列.代码从上到下执行.  
+ 这一大坨代码执行完了之后,才会去看微任务队列里有没有东西,如果有,把里面的东西执行完,  
+ 再去看宏任务队列
+```
