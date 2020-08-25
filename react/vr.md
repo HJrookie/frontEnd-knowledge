@@ -305,7 +305,15 @@ export default class Child extends Component {
 
 ```
 
-### 组件嵌套
+### 生命周期  
+```js
+created: 'componentWillMount',  
+mounted: 'componentDidMount',  
+updated: 'componentDidUpdate',  
+beforeDestroy: 'componentWillUnmount',  
+errorCaptured: 'componentDidCatch',  
+render: 'render'  
+```
 
 
 

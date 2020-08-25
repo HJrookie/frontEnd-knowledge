@@ -135,11 +135,13 @@ nav a, aside a {color: blue}
 article section { margin: 5px }
 article > section { border: 1px solid #ccc }
 ```
+
 附: > 意思  
 A > B 代表,A元素后仅一代元素  
-A空格B 代表 A元素的所有子B元素
+A空格B 代表 A元素的所有子B元素 
 A + B ,选择紧接A元素后面出现的B元素,并且A,B有共同的父元素(兄弟选择器)  
-A~B ,选择前面有A元素的B元素,(不是后代关系,而是兄弟关系),A,B有相同父元素,但是B不必紧随A  
+A~B ,选择前面有A元素的B元素,(不是后代关系,而是兄弟关系),A,B有相同父元素,但是B不必紧随A    
+[如该网页所示](https://jsfiddle.net/areYouOk/zqkgvcms/13/)
 
 
 

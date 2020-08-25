@@ -42,4 +42,15 @@ promise.race是有一个resolve,返回的那个promise就resolve
 实际上返回的promise的状态取决于最先被resolve,或者reject的promise  
 promise.all 中任意一个被拒绝.其他所有都立即被拒绝  
 promise.all 会等到所有都resolve之后,再返回  
-.then方法会创建,并且返回一个新的promise,会随着前面Promise的解决而解决,
+.then方法会创建,并且返回一个新的promise,会随着前面Promise的解决而解决,  
+.then,.catch都会返回一个promise
+
+
+### promise.allSettled()
+promise.all有个缺点,如果有个reject,其余的都不会执行了,直接退出.
+promise.allSettled就是为了解决这个问题  
+
+### promise.any
+返回第一个成功的promise,只要有一个promise成功,这个方法终止;  
+如果都失败了,它会返回一个AggregateError对象,有个error属性,是所有  
+失败值组成的数组  
