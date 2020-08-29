@@ -67,7 +67,18 @@ handleClick = ()=>{
    或者{ isTrue && 组件 },因为true && exp 返回后面的,false && exp 返回false  
    或者 三目运算符,三元
 ```js
+if(isTrue){
+return (
+  <div>
+    <button>123456</button>
+  </div>
+)}
 
+return (
+  <div>
+    <a href = "https://www.baidu.com">Click me</a>
+  </div>
+)
 ```
 - 阻止组件渲染,如果不愿让它渲染,`return null  `
 - 列表渲染
