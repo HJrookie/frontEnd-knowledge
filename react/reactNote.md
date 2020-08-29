@@ -65,7 +65,7 @@ handleClick = ()=>{
 ```
 -  条件渲染,可以把组件存到变量里,  
    或者{ isTrue && 组件 },因为true && exp 返回后面的,false && exp 返回false  
-   或者 三目运算符
+   或者 三目运算符,三元
 ```js
 
 ```
