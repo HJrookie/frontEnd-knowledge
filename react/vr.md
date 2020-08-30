@@ -315,6 +315,140 @@ errorCaptured: 'componentDidCatch',
 render: 'render'  
 ```
 
+### computed
+react中:
+```js
+export default function ReversedMessage({ message }) {
+  const reversedMessage = message.split('').reverse().join('');
+
+  return <p>{reversedMessage}</p>;
+}
+```
+如果对性能有更高要求,可以使用userMemo
+```js
+import { useMemo } from 'react';
+
+export default function ReversedMessage({ message }) {
+  const reversedMessage = useMemo(() => {
+    return message.split('').reverse().join('');
+  }, [message]);
+
+  return <p>{reversedMessage}</p>;
+}
+```
+### methods 
+在function或者component中声明方法.
+### 方法修饰符-Vue
+```js
+// 感觉是高阶函数
+function prevent(callback) {
+  return (event) => {
+      event.preventDefault();
+      callback(event);
+  };
+}
+
+export default function AjaxForm() {
+  function submitWithAjax(event) {
+    // ...
+  }
+
+  return (
+    <form onSubmit={prevent(submitWithAjax)}>
+      {/* ... */}
+    </form>
+  );
+}
+```
+### 生命周期
+```js
+// useEffect,
+//useRef不知道
+import { useEffect, useRef } from 'react';
+import DateTimePicker from 'awesome-date-time-picker';
+
+export default function Component() {
+  const dateTimePickerRef = useRef();
+
+  useEffect(() => {
+    const dateTimePickerInstance =
+      new DateTimePicker(dateTimePickerRef.current);
+
+    return () => {
+      dateTimePickerInstance.destroy();
+    };
+  }, []);
+
+  return <input type="text" ref={dateTimePickerRef} />;
+}
+```
+#### react的useEffect
+没有任何依赖,就是第二个参数啥都没有,此时:每次渲染函数都会执行,并且在下一次渲染之前会clean up  
+依赖是个空,即`[]`,那么第一次渲染,会执行  
+依赖一个值,`[name]`,只有依赖更新时执行,第一次也执行;
+### watcher
+可以用useEffect来实现,并且如果想让第一次渲染的时候,不执行effect;可以用useRef  
+```js
+import { useEffect, useRef, useState } from 'react';
+
+export default function AjaxToggle() {
+  const [checked, setChecked] = useState(false);
+  const firstRender = useRef(true);  // 这里
+
+  function syncWithServer(checked) {
+    // ...
+  }
+
+  useEffect(() => {
+    if (firstRender.current) {  //这里做判断
+      firstRender.current = false;
+      return;
+    }
+    syncWithServer(checked);
+  }, [checked]);
+
+  return (
+    <input
+      type="checkbox"
+      checked={checked}
+      onChange={() => setChecked(!checked)}
+    />
+  );
+}
+```
+### slot,scoped slots
+```js
+export default function RedParagraph({ sidebar, children }) {
+  return (
+    <div className="flex">
+      <section className="w-1/3">
+        {sidebar}
+      </section>
+      <main className="flex-1">
+        {children}
+      </main>
+    </div>
+  );
+}
+
+// In use:
+
+return (
+  <Layout sidebar={<nav>...</nav>}>
+    <Post>...</Post>
+  </Layout>
+);
+```
+
+### 懒加载 lazy evaluting
+放到函数里,在需要的时候偶,调用;
+
+
+### provide/inject
+createContext / useContext
+### 自定义指令
+组件
+
 
 
 
