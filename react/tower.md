@@ -1,0 +1,25 @@
+  ### Scheduler
+  Async Task  
+  1. 先在数据库中初始化task记录,然后把任务添加到Scheduler  
+  2. 在Scheduler队列中完成排队,或者超时时间到,就被取出,分配给一个worker  
+  3. worker执行时先调用connector API ,成功后使用ORM更新DB,最终任务完成  
+  
+  #### 失败  
+  db初始化失败,或者更新失败,或者调用connnctor API失败,任务会更新至失败状态  
+ db的失败,会记录日志;  
+ connector API失败,记录到数据库;  
+ #### worker失联
+ worker会在DB中有心跳,如果失联了,这个task的状态被设置为worker_discnnnected,  
+ 然后被添加到Scheduler,恢复为pending;
+ #### 去重
+ 防止重复任务,对于缓存类Async task,在init状态下,判断当前是否有同类任务在执行中,  
+ 实际为在DB中为每一类任务维护一个锁,例如:  
+ 每5分钟更新一次VM缓存数据,但是一次更新的时间超过了5分钟;  
+  Tower 会跳过此次 Async Task，将其转移至 skipped 状态
+  #### 意外终止  
+  Async task,只有三个最终状态:  
+  1. skipped  2. succeess  3. failed
+  tower有定时任务,查找意外终止的;判断条件如下:  
+  1. 不是最终状态  
+  2. 不在Scheduler队列  
+  3. 没有worker在处理
