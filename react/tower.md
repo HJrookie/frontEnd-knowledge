@@ -3,6 +3,9 @@
   1. 先在数据库中初始化task记录,然后把任务添加到Scheduler  
   2. 在Scheduler队列中完成排队,或者超时时间到,就被取出,分配给一个worker  
   3. worker执行时先调用connector API ,成功后使用ORM更新DB,最终任务完成  
+  ------------------------------  
+  4. worker会有心跳.如果失联,DB设为worker_disconnected,在放到Scheduler,然后pending  
+  5. 然后成功,或者失败,或者跳过
   
   #### 失败  
   db初始化失败,或者更新失败,或者调用connnctor API失败,任务会更新至失败状态  
