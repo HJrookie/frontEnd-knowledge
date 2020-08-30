@@ -10,6 +10,15 @@
   immediate   0  
   user block  300  
   normal  600 
+  ### 缓存
+  以获取集群中所有vm为例子:  
+  1. 获取所有连接中的集群  
+  2. 获取集群对应的connector  
+  3. 通过Connector获取集群中所有vm  
+  4. 通过ORM将每个vm update/insert到DB  
+  5. 同时收集vm的uuid  
+  6. 通过ORM找到uuid不在第五步中uuid列表中的虚拟机  
+  7. 移除上述虚拟机
   #### 失败  
   db初始化失败,或者更新失败,或者调用connnctor API失败,任务会更新至失败状态  
  db的失败,会记录日志;  
