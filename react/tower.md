@@ -6,7 +6,10 @@
   ------------------------------  
   4. worker会有心跳.如果失联,DB设为worker_disconnected,在放到Scheduler,然后pending  
   5. 然后成功,或者失败,或者跳过
-  
+  #### 优先级和超时机制
+  immediate   0  
+  user block  300  
+  normal  600 
   #### 失败  
   db初始化失败,或者更新失败,或者调用connnctor API失败,任务会更新至失败状态  
  db的失败,会记录日志;  
