@@ -35,12 +35,41 @@ query {
 }
 ```
 
+### 变量
+```js
+query TestQuery($episode:Episode = 'test'){  // 默认值
+  hero(episode: $episode){   //这里使用变量
+  name
+  friends{
+  name
+    }
+  }
+}
+```
+### 指令
+```js
+query Hero(#episode:Episode,$withFriends:Boolean!){
+  hero(episode:$episode){
+    name
+    friends @include(if:$withFriends){  //这里是指令,或者 @skip(true时跳过)
+      name
+    }
+  }
+}
 
+{
+  "episode":"JEDI",
+  "withFriends":true
+}
+```
 
-
-
-
-
+## Mutation
+数据变更
+###  内联片段
+查询的字段如果是接口类型,或者联合类型;可以用内联片段来取出下层具体类型的数据;
+### 元字段
+不知道要将从GraphQL服务器获得什么类型.__typename,  
+可获得对象类型名称;
 
 
 
