@@ -22,7 +22,18 @@ query {
 1. 对象类型：用户在 schema 中定义的 type
 2. 标量类型：GraphQL 中内置有一些标量类型 String、Int、Float、Boolean、ID，用户也可以定义自己的标量类型  
 
-
+### 别名
+如果要查询相同字段
+```js
+{
+  empireHero:hero(episode:EMPIRE){
+  name
+  }
+  jediHero:hero(episode:JEDI){
+  name
+  }
+}
+```
 
 
 
