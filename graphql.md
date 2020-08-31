@@ -71,6 +71,35 @@ query Hero(#episode:Episode,$withFriends:Boolean!){
 不知道要将从GraphQL服务器获得什么类型.__typename,  
 可获得对象类型名称;
 
-
-
-
+### 接口
+定义一些公共属性.然后type xxx  implements Character,可以结合内联片段用  
+### 联合类型
+类似接口,但是不指定类型之间的公共字段;  
+union SearchResult = Human | Droid | Starship  
+如果查询结果是联合类型,需要结合条件片段,才能查询任意字段
+```js
+{
+  search(text: "an") {
+    __typename
+    ... on Human {
+      name
+      height
+    }
+    ... on Droid {
+      name
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}
+```
+### 输入类型
+```js
+input ReviewInput{
+starts: Int!
+commentary: String
+}
+```
