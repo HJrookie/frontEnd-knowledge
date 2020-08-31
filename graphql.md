@@ -34,6 +34,16 @@ query {
   }
 }
 ```
+### fragments 片段
+```js
+fragment TestName on Character{
+name
+apppearsIn
+friends{
+  name
+}
+}
+```
 
 ### 变量
 ```js
