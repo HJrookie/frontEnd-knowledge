@@ -11,3 +11,18 @@
 1. git rebase -i HEAD~3  
 2. 把下面的pick 改成s,保存,退出  
 3. 修改commit的message,保存,退出  
+
+
+### 常用的命令
+1. yarn  prepublish     //重新publish一下,到对应的package的目录.prepublish一下..  
+2. 解决冲突
+
+```js
+git checkout -f 跑到一个新分支上
+然后git pull --rebase origin master,
+git branch 看下在哪个分支上.应该是在新分支
+处理冲突,然后 git add .
+git rebase --continue 
+git branch .此时应该回到原来的分支了,
+看下git log,commit的id都变了
+```
