@@ -460,7 +460,10 @@ const Person = ({ personId }) => {
 ### hook的顺序
 react 怎么知道哪个state对应哪个useState.答案是按照顺序;  
 要在最顶层的位置放置hook,不要把hook放到if语句里,否则hook执行的顺序可能会改变.  
-
+### react动态的style
+```js
+style={{ color: isOnline ? 'green' : 'black' }}>
+```
 
 
 
