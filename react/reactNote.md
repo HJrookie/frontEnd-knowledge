@@ -465,6 +465,9 @@ react 怎么知道哪个state对应哪个useState.答案是按照顺序;
 style={{ color: isOnline ? 'green' : 'black' }}>
 ```
 
+### hook 相关  
+自定义 Hook 必须以 “use” 开头吗？  
+必须如此。这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了
 
 
 
