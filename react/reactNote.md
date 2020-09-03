@@ -457,11 +457,9 @@ const Person = ({ personId }) => {
 
 ### react hook 动机..为什么会有.解决了那些问题  
 [react详解](https://react.docschina.org/docs/hooks-intro.html)
-
-
-
-
-
+### hook的顺序
+react 怎么知道哪个state对应哪个useState.答案是按照顺序;  
+要在最顶层的位置放置hook,不要把hook放到if语句里,否则hook执行的顺序可能会改变.  
 
 
 
