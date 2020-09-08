@@ -1,7 +1,7 @@
 ### recursive type references 递归类型引用
 [recursive type references](https://github.com/microsoft/TypeScript/pull/33050)
 
-```ts
+```typescript
 type ValueOrArray<T> = T | Array<ValueOrArray<T>>;
 
 const a0: ValueOrArray<number> = 1;
