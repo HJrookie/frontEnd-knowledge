@@ -420,8 +420,7 @@ function App() {
 ```
 
 ### useEffect 副作用钩子
-具有副作用的操作,比如ajax;以前放在componentDidMount,现在可以放到  
-useEffect; 用法如下所示:  
+
 ```ts
 useEffect(()=>{
     // async action
@@ -468,13 +467,6 @@ style={{ color: isOnline ? 'green' : 'black' }}>
 ### hook 相关  
 自定义 Hook 必须以 “use” 开头吗？  
 必须如此。这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了
-
-
-
-
-
-
-
 
 
 
