@@ -51,8 +51,19 @@ reducer函数不用手动调用,它会在`store.dispatch(action)`的时候自己
 - store.subscribe(func) 当state变化时,自动执行该函数.可以把组件的更新函数放进去,比如render,或者setState..  
 
 
-
-
+- reducer的拆分  
+combineReducers可以将多个子reducer合并成1个reducer,
+```js
+const appReducer = combineReducers({
+  chart: chartReducer,
+  modal: modalReducer,
+  upload: uploadReducer,
+  table: tableReducer,
+  task: taskReducer,
+  globalSearch: globalSearchReducer,
+});
+// 这种写法是可以的,但是要求state中的key和combineReducers的参数中的那个对象的key一致;
+```
 
 
 
