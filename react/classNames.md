@@ -13,3 +13,19 @@ classNames('hello',arr)  //'hello b c'
 let value = "primiary";
 classNames({ [`test-str-${value}-test`]:true })
   ```
+### 结合react
+```js
+var classNames = require('classnames');
+
+class Button extends React.Component {
+  // ...
+  render () {
+    var btnClass = classNames({  // 在这里写一些属性
+      btn: true,
+      'btn-pressed': this.state.isPressed,
+      'btn-over': !this.state.isPressed && this.state.isHovered
+    });
+    return <button className={btnClass}>{this.props.label}</button>;
+  }
+}
+```
