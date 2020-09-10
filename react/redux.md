@@ -33,7 +33,7 @@ function addTodo(text){
 store.dispatch(addTodo('eat something'))
 ```
 
-- reducer 
+- reducer  
 store收到Action之后,必须给出一个新的state才行,这样view才能变化,新的state的计算过程,叫做reducer  
 ```js
 const reducer = function(curState,action){
@@ -44,9 +44,9 @@ const reducer = function(curState,action){
 }
 ```
 reducer函数不用手动调用,它会在`store.dispatch(action)`的时候自己触发,因此需要告诉store对应的reducer是谁,  
-因此在创建的时候需要把reducer传给store,例如`store.
+因此在创建的时候需要把reducer传给store,例如`store.createStore(reducer)`
 
-- reducer中的不能修改state,必须返回一个全新的state.可以使用`Object.assign`或者`[...state,newItem]`
+- reducer中不能修改cuRstate,必须返回一个全新的state.可以使用`Object.assign`或者`[...state,newItem]`
 
 - store.subscribe(func) 当state变化时,自动执行该函数.可以把组件的更新函数放进去,比如render,或者setState..  
 
