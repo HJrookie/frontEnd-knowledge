@@ -23,6 +23,23 @@ interface TestFunc{
 默认参数,ts会识别为可选参数,默认参数后面可以跟必须参数;(要想使用默认参数,可传undefined)  
 剩余参数, `...rest`,这样子,只能是最后一个参数
 
+### 访问属性的符号
+```js
+let obj = {name:'bob',age:12}
+// 1. ?.
+console.log(obj?.name)  //真实值或者undefined
+// 2. !.
+console.log(obj!.name)  //强制告诉编译器他有name属性,实际有没有不好说
+
+// 3. ??     a ?? b  a如果是null或者undefined,返回b,否则a    和 || 有一些区别
+console.log(null ?? 12)     // 12
+console.log(undefined ?? 12)   // 12
+console.log(0 ?? 12)         // 0 
+console.log('' ?? 12)         // ''
+
+
+
+```
 
 
 
