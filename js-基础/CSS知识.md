@@ -180,3 +180,9 @@ div.menu-bar li:hover > ul {
 块级元素,行内元素  
 伪元素的content是啥. 默认应该是行内元素. height:0ox 可以去掉. 但是 content,以及diskplay:block,和clear不能去掉
   
+#### z-index
+- 当该元素position为非static的时候生效,否则无效;  
+- z-index为auto的元素不参与层级比较  
+- 
+[demo](https://jsfiddle.net/6k5wgujs/)
+> 灰色框层级小，但是它显示出来了。它的父元素的层级大于相邻元素的层级，无论它的级别有多小，都可以大于相邻的小于父元素的层级。
