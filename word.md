@@ -10,3 +10,4 @@ imperative  紧急的,迫切的
 radial  放射状的..辐射状的  
 gradient  坡度,斜率,变化率  
 continuous  `[kənˈtɪnjuəs]` integration  持续集成  
+defect  缺陷  
