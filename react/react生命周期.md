@@ -1,4 +1,5 @@
 # 以下生命周期方法仅仅针对 Component组件
+[将组件周期的文章,还没看](https://juejin.im/post/6844903510538977287)
 ### 有哪些
 componentWillMount          类似于unmount.猜测有ODM模板,但是没有渲染数据上去  
 componentDidMount           组件已经渲染到DOM中去了  
