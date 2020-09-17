@@ -3,8 +3,9 @@ componentWillMount          类似于unmount.猜测有ODM模板,但是没有渲�
 componentDidMount           组件已经渲染到DOM中去了  
 componentWillUnmount  
 
+[生命周期方法详解-react文档](https://zh-hans.reactjs.org/docs/react-component.html#forceupdate)
 
-### 顺序  ->挂载时
+### 顺序  -->挂载时
 1. constructor    进行数据的初始化  
 2. static getDeridedStateFromProps())  
 3. render()  
@@ -18,7 +19,11 @@ componentWillUnmount
 - getSnapshotBeforeUpdate()  
 - componentDidUpdate()   
 
+### 顺序 卸载时-->
+componentWillUnmount  
 
-
+### 顺序 出现错误时-->
+- static getDerivedStateFromProps()  
+- componentDisCatch()
 
 
