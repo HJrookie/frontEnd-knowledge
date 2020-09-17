@@ -8,6 +8,8 @@
  
 ```
 ### 注意事项 
+- 直接给state赋值是不可以的..代码不会重新渲染组件  
+- state的更新可能是异步的..不是同步的过程(接收一个值是这样子,如果接收一个函数,就没有此限制)
 ```js
 function Counter() {
   const [count, setCount] = useState(0);
