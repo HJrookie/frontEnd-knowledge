@@ -168,4 +168,6 @@ function f(x){
 ```
 
 
+### for ...of 可迭代
+
 
