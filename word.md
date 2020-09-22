@@ -27,6 +27,8 @@ iterate  迭代
 readiness  准备就绪  
 constraint 限定 约束  
 for the time being 目前 暂时  
+Pseudo   伪  
+
 
 
 
