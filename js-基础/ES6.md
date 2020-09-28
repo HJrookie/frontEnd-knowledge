@@ -174,3 +174,30 @@ function f(x){
 
 字符串可以当数组一样解构赋值.  
 解构赋值规则-右边不是对象或者数组 就将其转成对象…如果是布尔.数字  就是包装器对象
+函数参数如果是对象 或者 数组也可以解构.可以给里面的每个参数赋默认值..也可以给函数的整个参数默认值  
+解构赋值里面尽量不要使用括号  
+### 解构赋值能干嘛
+交换两个变量的值  
+很方便的从对象 数组  函数参数  json中 取指定参数的默认值  值  
+还可以从map取值  
+```js
+const map = new Map();
+map.set('first', 'hello');
+map.set('second', 'world');
+
+for (let [key, value] of map) {
+  console.log(key + " is " + value);
+}
+// first is hello
+// second is worldvar {x:y = 3} = {};
+
+解构赋值和默认值可以一起用
+console.log(y);//对象没有x，输出默认值
+var {x:y = 3} = {x: 5};
+console.log(y);//对象有x，输出对于值
+
+也可以用左边对象  解构右边的数组.取想要的值  
+
+```
+
+
