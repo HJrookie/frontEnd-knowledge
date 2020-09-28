@@ -66,7 +66,7 @@ p:first-child{
  例子:  div:not(.red)  
  
  许多div中,不包含class="red" 的那些div,会应用此样式  
- 
+ [例子  ..](https://jsfiddle.net/areYouOk/arhw6kgm/)
  ##### 4. :nth-child(an+b)  
  倾向于按照顺序,不区分元素类型,如果不是该类型的元素,还是计数,;  
   > (在所有兄弟元素中应用规则,不符合,就跳过)首先找到所有当前元素的兄弟元素，然后按照位置先后顺序从1开始排序，选择的结果为CSS伪类:nth-child括号中表达式（an+b）匹配到的元素集合（n=0，1，2，3...）。示例:  
