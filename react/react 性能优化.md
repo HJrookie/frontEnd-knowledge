@@ -1,4 +1,4 @@
-## useMemo 和 useCallback
+
 ### react 性能优化
 没有 hook 的时候,如果组件内部需要维护状态.我们一般是使用类组件,把状态存储在 state 中,然后用 setState 来更新state 中的值;  
 这时候,性能优化点在于:  
