@@ -8,5 +8,6 @@ const retFunc=useCallback(func,[name])
 我们可以借助useCallback来返回函数，然后把这个函数作为props传递给子组件；  
 这样，子组件就能避免不必要的更新  
 
+[useCallback 的例子](https://codesandbox.io/s/yanzheng-useeffect-fggwj?file=/src/App.js)
 ---------------
 更通用的来说,所有依赖本地状态,或者props来创建函数,需要使用到缓存函数的地方,都可以用useCallback;
