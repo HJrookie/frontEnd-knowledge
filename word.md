@@ -34,7 +34,7 @@ line feed      换行
 carriage return    回车  
 line separator     行分隔符  
 paragraph  separapor   段分隔符
-
+whereas     conj.鉴于...(用在开头),然而,但是(用在两个句子,中间)  
 
 
 
