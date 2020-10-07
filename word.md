@@ -28,13 +28,13 @@ readiness  准备就绪
 constraint 限定 约束  
 for the time being 目前 暂时  
 Pseudo   伪  
-remedy  英[ˈremədi] v. 改正纠正 n.改进措施
-reverse solidus    反斜杠   ==  backslash  
+remedy  英[ˈremədi] v. 改正纠正 n.改进措施  
+reverse solidus    反斜杠   ==  backslash    
 line feed      换行   
-carriage return    回车  
-line separator     行分隔符  
-paragraph  separapor   段分隔符
-whereas     conj.鉴于...(用在开头),然而,但是(用在两个句子,中间)  
+carriage return    回车   
+line separator     行分隔符    
+paragraph  separapor   段分隔符  
+whereas     conj.鉴于...(用在开头),然而,但是(用在两个句子,中间)    
 adjacent sibling combinator      临近的   +  
 general   sibling combinator     通用的   ~  
 child combinator                 子连接器 >  
