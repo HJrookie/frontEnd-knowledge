@@ -1,13 +1,16 @@
 ### 简介
 将 一片区域划分为行和列,形成许多个单元格.可以指定某个项目在哪个单元格;  
 分 container 和项目.类似 flex 中的容器和项目,注意: 项目只能是容器中的顶层子元素  
+### 网格线  
+划分网格的线;有水平.垂直的两种;  
+水平上,3行需要4根水平线.垂直也是一样;  
 ### 可应用到容器上的属性  
 1. display: grid; 块级元素;  或者 inline-grid;  自身变成 inline 的.内部还是 grid; 类似于 inline-flex; 内部还是 flex 布局,但是具有 inline 元素的特性;  
 2. grid-template-columns,grid-template-rows
 3. row-gap 属性，column-gap 属性，gap 属性  
- - grid-gap 是行和列的 gap 的简写  
+ - gap 是行和列的 gap 的简写  
  ```css
- rid-gap: <row-gap> <column-gap>;  // 如果省略第二个,默认等于第一个
+ gap: <row-gap> <column-gap>;  // 如果省略第二个,默认等于第一个
  ```
 4. grid-template-areas 定义区域  
 ```css
