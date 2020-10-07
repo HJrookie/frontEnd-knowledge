@@ -7,7 +7,7 @@
   - flex-start,flex-end,center,baseline,stretch  
   - baseline 文字的第一行对齐  
   - stretch  默认,占满高度  
-3. align-content  设置浏览器如何沿着 flex 的交叉轴和 grid 的横轴分配空间[例子 ](https://jsfiddle.net/areYouOk/wgnd5q0z/8/)
+3. align-content  设置浏览器如何沿着 flex 的交叉轴和 grid 的横轴分配空间   [例子 ](https://jsfiddle.net/areYouOk/wgnd5q0z/8/)
   - flex-start(从上到下),flex-end(从下到上),center(垂直居中),stretch(默认占满),
   space-between(垂直方向上的 space-between ),space-around(垂直的 around)    
   - 
