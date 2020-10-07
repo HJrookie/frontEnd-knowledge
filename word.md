@@ -40,6 +40,7 @@ general   sibling combinator     通用的   ~
 child combinator                 子连接器 >  
 descendant Combinator            空格分割 ` `  
 
+horizontal      ˌhɒrɪˈzɒntl    `好 rui zan  头..`  
 
 
 
