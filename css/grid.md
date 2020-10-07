@@ -42,7 +42,9 @@ grid-auto-flow:  row,column，row dense,column dense(先填满空格)
 }
 ```
 8. grid-auto-columns 属性，grid-auto-rows 属性  浏览器自动生成的 网格 的高度和宽度  
-
+9. grid-template 属性，grid 属性  
+> grid-template属性是grid-template-columns、grid-template-rows和grid-template-areas这三个属性的合并简写形式。
+> grid属性是grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow这六个属性的合并简写形式
 
 
 
