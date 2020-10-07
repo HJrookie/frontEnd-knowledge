@@ -152,7 +152,10 @@ div.menu-bar li:hover > ul {
   3. id选择器
   4. 类选择器 (例如，.example)，属性选择器（例如，[type="radio"]）和伪类（例如，:hover）  
   5. 类型选择器（例如，h1）和伪元素（例如，::before）  
-  > 通配选择符（universal selector）（*）关系选择符（combinators）（+, >, ~, ' ', ||）和 否定伪类（negation pseudo-class）（:not()）对优先级没有影响。（但是，在 :not() 内部声明的选择器会影响优先级）。
+  > 通配选择符（universal selector）（*）关系选择符（combinators）（+, >, ~, ' ', ||）和 否定伪类（negation pseudo-class）（:not()）对优先级没有影响。（但是，在 :not() 内部声明的选择器会影响优先级）。  
+  
+  - 更具体的规则优先级是更高的;   
+  - 如果优先级相等,放在后面的生效
 #### 提高CSS加载速度
 1. 对接CDN.或者静态文件(js,css)放到oss.oss一般和cdn有合作  
 2. 压缩CSS文件的大小  
