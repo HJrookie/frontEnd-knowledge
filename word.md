@@ -28,7 +28,7 @@ readiness  准备就绪
 constraint 限定 约束  
 for the time being 目前 暂时  
 Pseudo   伪  
-remedy  英[ˈremədi] 解决良策
+remedy  英[ˈremədi] v. 改正纠正 n.改进措施
 reverse solidus    反斜杠   ==  backslash  
 line feed      换行   
 carriage return    回车  
