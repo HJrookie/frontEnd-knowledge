@@ -42,12 +42,11 @@ h1, h2:maybe-unsupported, h3 { font-family: sans-serif }
 ### Combinators
 1. Descendant Combinator   后代选择器  
 Syntax: A B  (空格分割)
-2. Child Combinator  
-Syntax: A > B  
-3. Adjacent sibling combinator  
+2. Child Combinator  子元素,仅一代  
+Syntax: A > B   
+3. Adjacent sibling combinator  兄弟元素,仅一个  
 Syntax: A + B  
-
-4. General sibling combinator    
+4. General sibling combinator    兄弟元素,所有  
 Syntax: A ~ B  
 
 ### Pseudo
