@@ -4,6 +4,48 @@
 ### 可应用到容器上的属性  
 1. display: grid; 块级元素;  或者 inline-grid;  自身变成 inline 的.内部还是 grid; 类似于 inline-flex; 内部还是 flex 布局,但是具有 inline 元素的特性;  
 2. grid-template-columns,grid-template-rows
+3. row-gap 属性，column-gap 属性，gap 属性  
+ - grid-gap 是行和列的 gap 的简写  
+ ```css
+ rid-gap: <row-gap> <column-gap>;  // 如果省略第二个,默认等于第一个
+ ```
+4. grid-template-areas 定义区域  
+```css
+
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas: 'a b c'
+                       'd e f'
+                       'g h i';
+}
+```
+5. grid-auto-flow  默认先填充列,还是行  
+```css
+grid-auto-flow:  row,column，row dense,column dense(先填满空格)
+```
+6.justify-items 属性，align-items 属性，place-items 属性(在网格中内容如何对齐)
+```css
+.container {
+  justify-items: start | end | center | stretch;
+  align-items: start | end | center | stretch;
+  place-items: <align-items> <justify-items>;  //简写 这里先列后行 坑爹啊
+}
+```
+7. justify-content 属性，align-content 属性，place-content 属性  
+```css
+.container {
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+  place-content: <align-content> <justify-content>// 缩写. 先列后行  坑爹啊
+}
+```
+8. grid-auto-columns 属性，grid-auto-rows 属性  浏览器自动生成的 网格 的高度和宽度  
+
+
+
+
 
 
 
