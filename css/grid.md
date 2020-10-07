@@ -72,6 +72,7 @@ grid-area属性还可用作grid-row-start、grid-column-start、grid-row-end、g
 .item {
   justify-self: start | end | center | stretch;
   align-self: start | end | center | stretch;
+  place-self: <align-self> <justify-self>;   // 先列后行 
 }
 ```
 
