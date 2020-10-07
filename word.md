@@ -28,8 +28,12 @@ readiness  准备就绪
 constraint 限定 约束  
 for the time being 目前 暂时  
 Pseudo   伪  
-
-
+remedy  英[ˈremədi] 解决良策
+reverse solidus    反斜杠   ==  backslash  
+line feed      换行   
+carriage return    回车  
+line separator     行分隔符  
+paragraph  separapor   段分隔符
 
 
 
