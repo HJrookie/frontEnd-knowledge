@@ -17,7 +17,7 @@
   4.Ones 类型选择器 伪元素 
   
   ### 例子
-  ![mdn css优先级](https://imgchr.com/i/0di50P)
+  ![mdn css优先级](https://s1.ax1x.com/2020/10/07/0di50P.png)
   
   ### 例子2  DEMO
   [JS Fiddler DEMo](https://jsfiddle.net/areYouOk/xoak1ybn/3/)
