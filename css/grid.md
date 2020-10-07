@@ -46,7 +46,8 @@ grid-auto-flow:  row,column，row dense,column dense(先填满空格)
 > grid-template属性是grid-template-columns、grid-template-rows和grid-template-areas这三个属性的合并简写形式。
 > grid属性是grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow这六个属性的合并简写形式
 
-
+### 项目属性  
+1. grid-column-start 属性，grid-column-end 属性，grid-row-start 属性，grid-row-end 属性(指定的都是网格线)
 
 
 
