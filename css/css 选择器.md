@@ -35,6 +35,23 @@ h1, h2:maybe-unsupported, h3 { font-family: sans-serif }
 ```
 #### :is 和:where 区别:  
 *:where 总是具有0权重值(specificity)*  
-:is 会取参数列表中的最大的权重  
+*:is 会取参数列表中的最大的权重  *
+#### 共同点 
+他俩的参数都是 Forgiving Selector 
   
+### Combinators
+1. Descendant Combinator   后代选择器  
+Syntax: A B  (空格分割)
+2. Child Combinator  
+Syntax: A > B  
+3. Adjacent sibling combinator  
+Syntax: A + B  
+
+4. General sibling combinator    
+Syntax: A ~ B  
+
+### Pseudo
+1. Pseudo Class  
+2. Pseudo Element  
+
   
