@@ -18,6 +18,10 @@
   
   ### 例子
   ![mdn css优先级](https://s1.ax1x.com/2020/10/07/0di50P.png)
-  
+  附加怎么看优先级:  
+  1. 有一个内敛样式,就是1000  
+  2. 有 一个id 选择器 + 100  
+  3. 有一个类选择器,伪类,或者属性选择器  + 10    
+  4. 有一个伪元素,类型选择器, + 1
   ### 例子2  DEMO
   [JS Fiddler DEMo](https://jsfiddle.net/areYouOk/xoak1ybn/3/)
