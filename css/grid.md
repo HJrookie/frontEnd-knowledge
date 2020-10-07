@@ -47,11 +47,30 @@ grid-auto-flow:  row,column，row dense,column dense(先填满空格)
 > grid属性是grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow这六个属性的合并简写形式
 
 ### 项目属性  
-1. grid-column-start 属性，grid-column-end 属性，grid-row-start 属性，grid-row-end 属性(指定的都是网格线)
-
-
-
-
+1. grid-column-start 属性，grid-column-end 属性，grid-row-start 属性，grid-row-end 属性(指定的都是网格线),可用 span 3;[写的 Demo](https://jsbin.com/pihipubohi/edit?css,output)
+2. grid-column 属性， grid-row 属性  
+> grid-column属性是grid-column-start和grid-column-end的合并简写形式，
+> grid-row属性是grid-row-start属性和grid-row-end的合并简写形式。  
+```css
+.item {
+  grid-column: <start-line> / <end-line>;
+  grid-row: <start-line> / <end-line>;
+}
+```
+3. grid-area  项目在哪个区域   
+grid-area属性还可用作grid-row-start、grid-column-start、grid-row-end、grid-column-end的合并简写形式，直接指定项目的位置。
+```css
+.item {
+  grid-area: <row-start> / <column-start> / <row-end> / <column-end>;
+}
+```
+4. justify-self 属性，align-self 属性，place-self 属性
+```css
+.item {
+  justify-self: start | end | center | stretch;
+  align-self: start | end | center | stretch;
+}
+```
 
 
 ### 一些关键字
