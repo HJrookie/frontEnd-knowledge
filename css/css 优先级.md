@@ -25,3 +25,7 @@
   4. 有一个伪元素,类型选择器, + 1
   ### 例子2  DEMO
   [JS Fiddler DEMo](https://jsfiddle.net/areYouOk/xoak1ybn/3/)
+
+
+
+### [详见该处](https://wiki.developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#Specificity_2 )
