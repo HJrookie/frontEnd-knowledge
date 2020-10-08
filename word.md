@@ -47,6 +47,8 @@ finite    `ˈfaɪnaɪt`  有穷的
 automaton     `ɔːˈtɑːmətən`  不动脑袋,机械行事的人,小机器人  
 
 coroutine   `kə'routine`   协程  
+cumbersome  `卡` 大而笨重的,冗余的  
+
 
 
 
