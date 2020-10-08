@@ -64,7 +64,10 @@ const appReducer = combineReducers({
 });
 // 这种写法是可以的,但是要求state中的key和combineReducers的参数中的那个对象的key一致;
 ```
-
+- 理解:
+  > combineReducers 里的参数是个对象,v 是对应的 reducer,然后 combineReducers 的结果是一个大的 reducer 函数,  
+  > 该函数接受 state 和 action 两个参数,返回新的 state.内部实现还不清楚(todo)  
+  > actions 数组可以调用 reducer 作为 reduce 函数的参数
 
 
 
