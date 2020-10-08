@@ -17,7 +17,7 @@ const App = ()=> (
     }
     return errors;
   }}
-  render={ ({ handleSubmit, form, submitting, pristine, values }) =>(
+  render={ ({ handleSubmit, form, submitting, pristine, values }) =>(  // 这里必须是 component| render | children
     <form
       onSubmit = {handleSubmit}
     >
