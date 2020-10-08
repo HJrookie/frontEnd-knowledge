@@ -7,8 +7,8 @@ const store = createStore(func|param);
 - 这些数据在某一个时刻的状态,用state来描述.某一个state,通过`const state = store.getState()`;  
 state和view是一一对应的. 
 
-- state的变化,会引起view的变化,但是用户只能接触到view,view的变化需要引起state的变化,  
-这通过`Action`来实现;Action是用户发出的通知,表示state应该要变化了.
+- state的变化,会引起view的变化,但是用户只能接触到view,所以，State 的变化必须是 View 导致的.view 变化后,用 action 通知 state ;  
+Action 就是 View 发出的通知，表示 State 应该要发生变化了。
 ```js
 // action例子
 const action = {
