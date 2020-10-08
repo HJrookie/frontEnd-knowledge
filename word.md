@@ -42,7 +42,9 @@ descendant Combinator            空格分割 ` `
 horizontal      ˌhɒrɪˈzɒntl    `好 rui zan  头..`  
 
 scenarios  方案    `sɪˈnɑːrɪəʊz`  
-
+deterministic        `dɪˌtɜːmɪˈnɪstɪk    `  无法阻挡的,宿命论的   
+finite    `ˈfaɪnaɪt`  有穷的   
+automaton     `ɔːˈtɑːmətən`  不动脑袋,机械行事的人,小机器人  
 
 
 
