@@ -37,9 +37,9 @@ const MyFormComp = props => {
   失败一般都返回 submission errors,就是 FORM_ERROR 相关,返回一段文字   
   > 1. Synchronous  
     Returns on success, or an of submission errors on failure.undefinedObject  
-  2. Asynchronous with a callback  
+  > 2. Asynchronous with a callback  
     Returns , calls with no arguments on success, or with an of submission errors on failure.undefinedcallback()Object  
-  3. Asynchronous with a Promise  
+  > 3. Asynchronous with a Promise  
     Returns a that resolves with no value on success or resolves with an of submission errors on failure. The reason it resolves with errors is to leave     rejection for when there is a server or communications error.Promise<?Object>Object
 ### 一般怎么用的
 ```js
