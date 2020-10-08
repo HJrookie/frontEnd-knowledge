@@ -49,7 +49,9 @@ automaton     `ɔːˈtɑːmətən`  不动脑袋,机械行事的人,小机器人
 coroutine   `kə'routine`   协程  
 cumbersome  `卡` 大而笨重的,冗余的  
 gorgeous    `ˈɡɔːdʒəs`    非常漂亮的; 美丽动人的; 令人愉快的; 绚丽的; 灿烂的; 华丽的;  
-  
+pristine	英[ˈprɪstiːn]    崭新的; 清新的; 未开发的; 处于原始状态的;    
+
+
 
 
 
