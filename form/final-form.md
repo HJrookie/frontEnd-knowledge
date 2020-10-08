@@ -16,6 +16,7 @@ const App = ()=> (
     <form
       onSubmit = {handleSubmit}
     >
+    /* form里是个 div,div 里是 Label 和 Field */
       <div>
         <Label> username </Label>
         <Field
@@ -25,6 +26,18 @@ const App = ()=> (
           placeholder="something to place"
         /> 
       </div>
+    /* form里直接是 Field */
+      <Field
+      name="password"
+      >
+        {({input,meta}) => (
+          <div>
+            <label>password</label>
+            <input {...input} type="text" placeholder="test str"/>
+            {meta.error && meta.touched && <span> {meta.error}</span>}
+          </div>
+        )}
+      </Field>
       <pre>{JSON.stringify(values,0,2)}</pre>
     </form>
   )}
