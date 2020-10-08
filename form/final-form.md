@@ -4,6 +4,58 @@
 - children 的话 ,像下面这样子
 ```js
 `((props: FormRenderProps) => React.Node) | React.Node`
+/* FormRenderProps 的值如下所示 */
+Object {form: Object, handleSubmit: function handleSubmit(), active: undefined, dirty: false, dirtyFields: Object…}
+form: Object
+  batch: function batch() {}
+  blur: function blur() {}
+  change: function change() {}
+  destroyOnUnregister: false
+  focus: function focus() {}
+  mutators: Object
+  getFieldState: function getFieldState() {}
+  getRegisteredFields: function getRegisteredFields() {}
+  getState: function getState() {}
+  initialize: function initialize() {}
+  isValidationPaused: function isValidationPaused() {}
+  pauseValidation: function pauseValidation() {}
+  registerField: function registerField() {}
+  reset: function reset() {}
+  resetFieldState: function resetFieldState() {}
+  restart: function restart() {}
+  resumeValidation: function resumeValidation() {}
+  setConfig: function setConfig() {}
+  submit: function submit() {}
+  subscribe: function subscribe() {}
+handleSubmit: function handleSubmit() {}
+  <constructor>: "Function"
+active: undefined
+dirty: false
+dirtyFields: Object
+dirtySinceLastSubmit: false
+dirtyFieldsSinceLastSubmit: Object
+error: undefined
+errors: Object
+hasSubmitErrors: false
+hasValidationErrors: false
+initialValues: Object
+invalid: false
+modified: Object
+modifiedSinceLastSubmit: false
+pristine: true
+submitError: undefined
+submitErrors: undefined
+submitFailed: false
+submitSucceeded: false
+submitting: false
+touched: Object
+valid: true
+validating: false
+values: Object
+  username: "123"
+  password: "456"
+visited: Object
+
 
 <Form onSubmit={onSubmit} someArbitraryOtherProp={42}>
   {props => {
