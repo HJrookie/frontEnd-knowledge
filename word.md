@@ -14,8 +14,7 @@ defect  缺陷
 on schedule    按预定时间     
 nest  嵌套  
 humble  谦逊的  
-mission   使命  
-scenarios  方案  
+mission   使命   
 tackle    处理 解决  
 hoist 吊起 提升 拉高  
 traversal   遍历  
@@ -42,6 +41,7 @@ descendant Combinator            空格分割 ` `
 
 horizontal      ˌhɒrɪˈzɒntl    `好 rui zan  头..`  
 
+scenarios  方案    `sɪˈnɑːrɪəʊz`  
 
 
 
