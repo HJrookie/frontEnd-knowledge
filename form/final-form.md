@@ -10,7 +10,12 @@ const App = ()=> (
 <Form 
   onSubmit={onSubmit}
   initialValues = {{username:'Bob',age:12,height:180,id:2222}}
-  validate={(values)=>{
+  validate={(values)=>{   // record 级别的验证
+    const errors = {};
+    if(!values.username){
+      error.username = "Requited"
+    }
+    return errors;
   }}
   render={ ({ handleSubmit, form, submitting, pristine, values }) =>(
     <form
@@ -26,7 +31,7 @@ const App = ()=> (
           placeholder="something to place"
         /> 
       </div>
-    /* form里直接是 Field */
+    /* form里直接是 Field,然后 children 里渲染组件 */
       <Field
       name="password"
       >
@@ -34,7 +39,7 @@ const App = ()=> (
           <div>
             <label>password</label>
             <input {...input} type="text" placeholder="test str"/>
-            {meta.error && meta.touched && <span> {meta.error}</span>}
+            {meta.error && meta.touched && <span> {meta.error}</span>}  // record-level 的验证时,写在这
           </div>
         )}
       </Field>
