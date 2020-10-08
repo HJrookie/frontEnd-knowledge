@@ -46,6 +46,7 @@ deterministic        `dɪˌtɜːmɪˈnɪstɪk    `  无法阻挡的,宿命论的
 finite    `ˈfaɪnaɪt`  有穷的   
 automaton     `ɔːˈtɑːmətən`  不动脑袋,机械行事的人,小机器人  
 
+coroutine   `kə'routine`   协程  
 
 
 
