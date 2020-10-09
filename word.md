@@ -1,5 +1,5 @@
 phase                       阶段时期  
-forgery                       伪造
+forgery                       伪造  
 omit                        忽略  
 indicator                       指标 可以加s  
 modal                       模态对话框  
