@@ -55,6 +55,7 @@ shallow equals    浅相等
 encapsulated      被概括,简述vv   `in'kai p su lated`  
 interpolate      插值  `in'ter per late`
 palette    `pai'lət`   调色板  
+filter: drop-shadow  
  
 
 
