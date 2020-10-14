@@ -54,8 +54,8 @@ pristine	英[ˈprɪstiːn]    崭新的; 清新的; 未开发的; 处于原始�
 shallow equals    浅相等  
 encapsulated      被概括,简述vv   `in'kai p su lated`  
 interpolate      插值  `in'ter per late`
-
-
+palette    `pai'lət`   调色板  
+ 
 
 
 
