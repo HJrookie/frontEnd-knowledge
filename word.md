@@ -57,6 +57,7 @@ interpolate      插值  `in'ter per late`
 palette    `pai'lət`   调色板  
 filter: drop-shadow  
 popover  气泡卡片   `pao'pou ver`  
+font-feature-settings   一些 feature  ,mono-space 等宽字体  
 
 
 
