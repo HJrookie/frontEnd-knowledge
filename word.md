@@ -59,7 +59,7 @@ filter: drop-shadow
 popover  气泡卡片   `pao'pou ver`  
 font-feature-settings   一些 feature  ,mono-space 等宽字体  
 permissive   放纵的  姑息的  
-
+text-overflow:  ellipsis  `i 'lei p sis`  
 
 
 
