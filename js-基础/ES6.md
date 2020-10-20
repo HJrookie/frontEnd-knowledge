@@ -216,3 +216,7 @@ padStart  补全字符串  要补全的字符串最大长度.  用什么来补�
 padEnd  差不多
 第二个参数默认空格  
 trimStart. trimEnd  
+
+#### 正则表达式
+字符串对象共有 4 个方法，可以使用正则表达式：match()、replace()、search()和split()。  
+u 修饰符  可正确识别unicode字符  
