@@ -209,5 +209,10 @@ json.stringify  可能返回\ud800到\udfff之间的单个字符  但是这之�
 fromcodepoint  就是codepointat的逆 
 字符是以utf16的格式存储 每个字符占据2个字节 16个二进制位  
 有的字符需要用4个字节来存  js认为它是两个字符  
-
-
+includes  startswith  endswith  
+都支持第二个参数  开始位置  end是前n个字符  其他两个是从第n个到末尾  
+repeat
+padStart  补全字符串  要补全的字符串最大长度.  用什么来补全  
+padEnd  差不多
+第二个参数默认空格  
+trimStart. trimEnd  
