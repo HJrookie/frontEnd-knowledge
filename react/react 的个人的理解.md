@@ -98,6 +98,31 @@ function WelcomeDialog() {
 而 defaultChecked 则是非受控组件的属性，用于设置组件首次挂载时是否被选中。
 
 
+### dangerouslySetInnerHTML 
+不能直接用 innerHtml 来替换 dom,很容易有 xss 攻击的风险;  
+```js
+function createMarkup() {
+  return {__html: 'First &middot; Second'};
+}
 
+function MyComponent() {
+  return <div dangerouslySetInnerHTML={createMarkup()} />;
+  return <div dangerouslySetInnerHTML={{__html:'Hello world!'}} />;
+}
+```
+
+<option> 组件支持 selected 属性。你可以使用该属性设置组件是否被选择。这对构建受控组件很有帮助。
+
+### style
+```js
+const divStyle = {
+  color: 'blue',
+  backgroundImage: 'url(' + imgUrl + ')',
+};
+
+function HelloWorldComponent() {
+  return <div style={divStyle}>Hello World!</div>;
+}
+```
 
 
