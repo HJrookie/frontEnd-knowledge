@@ -14,4 +14,10 @@ const ref = CreateRef();
 现在 ref.current 指向 Father 中的 input 这个 dom  
 ```
   
-  
+2. . 什么时候使用 refs  
+何时使用 Refs
+
+- 管理焦点，文本选择或媒体播放。
+- 触发强制动画。
+- 集成第三方 DOM 库。
+
