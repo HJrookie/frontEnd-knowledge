@@ -26,3 +26,6 @@ const Inner = (props)=>{
   <div someData={data}> 55</div>
 )}>
 ```
+ - 每个 jsx 元素都是 React.createElement的语法糖    
+ - createRef  可以创建一个 ref  `const ref = createRef(); <input type="text" ref = {ref}>  re.current.focus()获得焦点`    
+- forwardRef 创建一个
