@@ -91,3 +91,13 @@ function WelcomeDialog() {
  - createRef  可以创建一个 ref  `const ref = createRef(); <input type="text" ref = {ref}>  re.current.focus()获得焦点`    
 - forwardRef 创建一个
 
+
+### react Dom
+当 <input> 组件的 type 类型为 checkbox 或 radio 时，组件支持 checked 属性。  
+你可以使用它来设置组件是否被选中。这对于构建受控组件（controlled components）很有帮助。  
+而 defaultChecked 则是非受控组件的属性，用于设置组件首次挂载时是否被选中。
+
+
+
+
+
