@@ -30,9 +30,11 @@ const Inner = (props)=>{
 
 ### 组合和继承,包含  
 #### 包含关系 
-其实就是 children,定义一个组件时,不知道它的子组件可能是什么,因此将 props.children 直接渲染到 jsx 上,  
+
+其实就是 children,定义一个组件时,不知道它的子组件可能是什么,因此将 props.children 直接渲染到 jsx 上,    
+
 大概是 `<div>{props.children}</div>`   
---------
+----------
 当然,有的时候需要在组件上留几个洞,这时候可以不用 children,可以用`left,middle,right` 或者`name,title,content` 这种的,  
 大概是`
 const Father:React.FC<FatherProps> = (props)=>{
