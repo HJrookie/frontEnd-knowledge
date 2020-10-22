@@ -29,7 +29,7 @@ const Inner = (props)=>{
 ```
 
 ### 组合和继承,包含  
- #### 包含关系 
+#### 包含关系 
 其实就是 children,定义一个组件时,不知道它的子组件可能是什么,因此将 props.children 直接渲染到 jsx 上,  
 大概是 `<div>{props.children}</div>`   
 --------
