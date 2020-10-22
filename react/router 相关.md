@@ -15,3 +15,14 @@ goBack
 
 ### useRouteMatch 
 没用过
+
+useparams
+
+const Detail = (props) => {
+  const { match: { params } } = props
+  const { id } = params
+  return (
+    <div>
+      params id: { id }
+      <DetailTips/>
+   
