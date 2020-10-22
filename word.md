@@ -61,8 +61,11 @@ font-feature-settings   一些 feature  ,mono-space 等宽字体
 permissive   放纵的  姑息的  
 text-overflow:  ellipsis  `i 'lei p sis`  
 
-
-
+八进制    Octal  
+8月 August 
+9月 September 
+10月 October 
+11月 November
 
 
 
