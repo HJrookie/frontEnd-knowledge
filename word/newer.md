@@ -56,7 +56,7 @@ text-overflow:                                    ellipsis            									 
 八进制                                                   Octal        
 composition                                    组成,compose        
 
-
+instruction    指令  
 
 
 
