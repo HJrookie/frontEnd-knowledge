@@ -125,4 +125,15 @@ function HelloWorldComponent() {
 }
 ```
 
+### PureComponent  
+它是一种语法糖,
+```js
+class Test extends React.PureComponent{
+  
+}
+会自动添加 shouldComponentUpdate 函数,来对 props,state中的值进行浅比较  
+比较引用类型的对象时,就不行了  
+可以使用 Immutable.js 来创建不可变对象,
+ 
+```
 
