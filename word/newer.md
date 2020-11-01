@@ -59,7 +59,7 @@ composition                                    组成,compose
 instruction    指令  
 
 
-
+ intrinsic   `ɪnˈtrɪnzɪk`         固有的  本身的, 
 
 
 
