@@ -45,12 +45,14 @@ useEffect(() => {
 用useEffect时,内部调用的函数尽量在useEffect中定义,这样子方便我们找到该函数对props和state的依赖,然后把这些依赖添加到[]里  
 ### 细节
 1. `useEffect(()=>{})`  
-func在挂载,每次数据更新,卸载时执行  
+func在挂载,每次数据更新(即组件重新渲染),卸载时执行
+> 如果在 useEffect 中取更新数据,那么会触发死循环,因为数据更新之后 effect 会再次执行
 2. `useEffect(()=>{},[])`  
 func在挂载,卸载时执行  
+> 这种情况下可以在 effect 中更新数据
 3. `useEffect(()=>{},[name])`  
 func在挂载,name每次变化,卸载时执行  
-4 `useEffect(()=>{},[name.age)`   
+4 `useEffect(()=>{},[name,age])`   
 func在挂载,name或者age中任意一个变化,卸载时执行
 
 - `()=>{}`的写法,代表每次都是新的函数    
