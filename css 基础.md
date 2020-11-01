@@ -20,3 +20,17 @@ box-shadow: inherit;
 box-shadow: initial;
 box-shadow: unset;
 ```
+
+2. 自适应 关键字
+```css
+fill-availabel'和'fit-content'  'min-content'和'max-content  
+可以使用到 宽度和高度上, 实现 宽度和高度的自适应  避免因为固定值所导致的不适应  
+
+fit-content 和 margin: 0 auto 实现 div 的水平居中
+div{
+width: fit-content;
+margin: 0px auto;
+}
+
+
+```
