@@ -68,3 +68,10 @@ text-overflow: ellipse;
 white-wrap: unwrap;
 可能由于 里面 是个 span 包裹的 icon,以及一段 span 包裹的文字,一直失败.  把文字放到 div 里,然后加上上面的样式  
 ```
+
+6. 绝对定位的元素 高度宽度 计算方法  
+> 绝对定位的元素是相对于离它最近的第一个 position 不是 static 的元素,  如果它的所有父元素都不符合,那么它将根据浏览器
+ 的可视区域宽度和高度来进行定位,即 html.clientHeihgt,clientWidth.  
+ 否则,根据父元素的 (paddign + content) 的宽高进行定位  
+```的
+```
