@@ -60,3 +60,11 @@ position:relative;
  ok 的
  transform: translateY(-12px)
 ```
+6. 字母显示为 `...` 问题  
+```css
+需要在块级元素上(也可以不是)  
+overflow: hidden;  
+text-overflow: ellipse;
+white-wrap: unwrap;
+可能由于 里面 是个 span 包裹的 icon,以及一段 span 包裹的文字,一直失败.  把文字放到 div 里,然后加上上面的样式  
+```
