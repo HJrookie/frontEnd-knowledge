@@ -37,5 +37,26 @@ margin: 0px auto;
 background-position: center; 可以 设置图片位置  
 background-size: contain/cover;  前者会缩放以适应屏幕,后者会拉伸来铺满屏幕;  
 
-```
+
+5. hover 一直闪烁的问题
+```css
+会影响下方元素的写法  (其所在容器未指定高度)
+.test{
+position:relative;
+&:hover{
+  margin-top: -12px;
+}
+}
+
+
+会闪烁的写法  
+.test{
+position:relative;
+&:hover{
+  top: -12px;
+}
+}
+
+ ok 的
+ transform: translateY(-12px)
 ```
