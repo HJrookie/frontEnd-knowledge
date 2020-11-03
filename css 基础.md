@@ -31,6 +31,11 @@ div{
 width: fit-content;
 margin: 0px auto;
 }
+```
+3. pointer-events: none auto; 可以禁止 hover ,click 的效果(应该还有别的)  
+4. background  
+background-position: center; 可以 设置图片位置  
+background-size: contain/cover;  前者会缩放以适应屏幕,后者会拉伸来铺满屏幕;  
 
-
+```
 ```
