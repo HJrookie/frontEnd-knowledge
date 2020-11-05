@@ -65,3 +65,6 @@ instruction    指令
 
 
 
+replicated    `' ruai p lei kei tei d`      复制 仿造 重现  
+pluralize      p (you)  ə  laiz  
+gist          要点  主旨  
