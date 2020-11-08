@@ -83,3 +83,4 @@ Regression  倒退回归
 idle 闲的..    
 
 qualitative   质的,定性的,性质的  
+demystified    深入浅出的,使通俗易懂  
