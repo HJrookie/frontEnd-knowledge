@@ -70,3 +70,13 @@ pluralize      p (you)  ə  laiz
 gist          要点  主旨  
 
 escape hatch  紧急出口  
+ergonomic   `ɜːrɡəˈnɑːmɪk]`   人体工程学的  
+invalidate   证明..错误,使无效,使作废  
+Memoize   menoization  `memo i 'zation`  记忆化, to be remembered  
+Memorization   就是名词记忆的意思  
+pronounce   pronunciation      
+vocabulary  词汇量  `vəuˈkæbjəleri`  
+forth(向前,离去)  force(强迫)  forthcoming  将要到来  
+
+Memoize   menoization  `memo i 'zation`  记忆化, to be remembered   
+Regression  倒退回归  
