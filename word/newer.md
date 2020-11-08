@@ -80,3 +80,4 @@ forth(向前,离去)  force(强迫)  forthcoming  将要到来
 
 Memoize   menoization  `memo i 'zation`  记忆化, to be remembered   
 Regression  倒退回归  
+idle 闲的..    
