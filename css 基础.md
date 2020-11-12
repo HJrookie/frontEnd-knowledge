@@ -75,3 +75,15 @@ white-wrap: unwrap;
  否则,根据父元素的 (paddign + content) 的宽高进行定位  
 ```的
 ```
+
+
+7. transition :  要变化的属性  2s ease-in-out;
+```css
+.container{
+height: 100px;
+transition: height 2s ease-in-out;
+  &:hover{
+    height: 40px;
+  }
+}
+```
