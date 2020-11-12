@@ -84,3 +84,7 @@ idle 闲的..
 
 qualitative   质的,定性的,性质的  
 demystified    深入浅出的,使通俗易懂  
+enforce   强迫  强制实施  
+explicitly    明确地  
+prestigious   有声望的  声誉高地   很重要的  
+contract    合同契约  
