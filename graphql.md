@@ -1,3 +1,10 @@
+### 重要的点
+Query 和 Mutation 的区别:  前者并行,后者串行  
+__typename 可以让客户端区分类型  
+
+
+
+
 ### 好处  
 把api变得灵活起来,
 [详见这里](https://chinese.freecodecamp.org/news/a-detailed-guide-to-graphql/)
@@ -36,14 +43,33 @@ query {
 ```
 ### fragments 片段
 ```js
-fragment TestName on Character{
+fragment TestName on Type{    // 用的时候  ...TestName ,标识是复数
 name
 apppearsIn
 friends{
   name
-}
+  }
 }
 ```
+
+
+### inline-Fragments inline片段  [对应的地址](https://graphql.org/learn/queries/#inline-fragments)
+```js
+// Character 可能是两种类型  取决于  episode 的值, fragment 也可以这么用  
+query HeroForEpisode($ep: Episode!) {
+  hero(episode: $ep) {
+    name
+    ... on Droid {         // 如果是 Droid 类型,
+      primaryFunction
+    }
+    ... on Human {         // 如果是 Human 类型,
+      height
+    }
+  }
+}
+```
+
+
 
 ### 变量
 ```js
