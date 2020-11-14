@@ -1,6 +1,8 @@
 ### schema 
 让 client 知道哪些类型可以查询,可能的返回值有哪些,类型是什么   
-
+### 类型相关  
+我们可以自定义哪些:  
+Query  Mutation  Input  Enum  interface  type  union  
 ### Type definition
 ```js
 
@@ -47,6 +49,7 @@ graphql 带了几个类型,
 - ID: The ID scalar type represents a unique identifier, often used to refetch an object  
 or as the key for a cache. The ID type is serialized in the same way as a String; however,  
 defining it as an ID signifies that it is not intended to be human‐readable.   
+__typename  其实最终也是 String 类型  [地址](https://graphql.org/learn/schema/#union-types)
 
 一般都可以自定义类型  
 `scalar Date`  
@@ -79,7 +82,71 @@ myField: ['a', null, 'b'] // valid
 ### Interfaces
 An Interface is an abstract type that includes a certain set of fields that a type must include to implement the interface.  
 如果别人实现这个接口,必须包含接口里的字段;  
+例如:  
+```js
+interface Human{
+name : String!:
+age: Int!:
+}
+type male implements Human{
+ name : String!:
+ age: Int!:
+ maleCanDo: String!;
+}
+type famale implements Human{
+ name : String!:
+ age: Int!:
+ famaleCanDo: String!;
+}
+```
+然后返回的类型是 Human. client 查询的时候,可以使用 inline fragment 来判断到底是什么类型,  `... on Male` 或者 `... on Famale ` 再带上各自独特的 fields  
+
+
+### Union types
+`union SearchResult = Human | Droid | Starship`  
+Note that members of a union type need to be concrete object types;  
+you can't create a union type out of interfaces or other unions  
+它的每个都要是 实在的对象类型,不能使用 interface 或者 其它联合类型来创建;  
+查询的时候,用 `inline fragment ` 来判断类型, `... on TYpe` ,
+```js
+{
+  search(text: "an") {
+    __typename
+    ... on Character {   // 公共类型 ,其实就是interface  
+      name
+    }
+    ... on Human {
+      height
+    }
+    ... on Droid {
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}
+
+```
+
+### Input types
+- 它不能有参数;因为是输入,不是查询;  
+- 不能在 schema 中混合 input 和 output 类型  
+- The fields on an input object type can themselves refer to input object types(field 的类型可以是 input 自己的类型) 
+```js
+AND: [ClusterWhereInput!]
+    OR: [ClusterWhereInput!]
+    NOT: [ClusterWhereInput!]
+```
+一般定义:  
+```js
+input ReviewInput {
+  stars: Int!
+  commentary: String
+}
+
+```
 
 
 
- 
