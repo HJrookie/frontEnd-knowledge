@@ -1,4 +1,4 @@
-1. 对于 restful 来说,可以通过 url 以及 args 来实现缓存  
+1. 对于 restful 来说,可以通过 url 以及 args 来实现缓存,(browser,nginx,应用层也可以做)  
 2. 对于 graphql,通过 id作为唯一标识符,生成UUID,
 
 从需求出发,自己做设计.然后graphql 满足我们的需求,就用了它;  
@@ -51,4 +51,21 @@ name:(parent)=>{
 按需查询的语法解决了封装无数中可能性的问题   
 数据拼接的问题,把拼接放到了 data layer 这一层,它去关心数据在哪里来的,并且获得他; fisheye 只是指定想要的 field 就可以;  
 
+3. restful 的缓存很容易做,在浏览器,nginx,应用层都可以做  
+这种通过 resolver 的方式的缓存如何来做;简单来说,通过什么来唯一标识一个请求;(极致的拆分,和标识)  
+3.1  用 field 来做标识  
+```js
+query{                      query{
+   getVm(id:"1"){              getVm(id:"1"){
+     vm_name                      vm_name
+     vmstatus                   }
+   }                        }
+}                         
+```
+左侧请求会形成的缓存:  
+```js
+query-getVm(id:"1")-vm_name  :  "vm1"  
+query-getVm(id:"1")-vmstatus  :  "runnung"  
+```
+3.1.1 可能有的问题  
 
