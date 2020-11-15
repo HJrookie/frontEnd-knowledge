@@ -101,6 +101,7 @@ const result = await prisma.user
 
 
 #### 模型
+```js
 // 这个是 ok 的
 model User {
   id    Int     @default(autoincrement()) @id
@@ -132,7 +133,7 @@ model Post {
   author     User    @relation(fields: [authorId], references: [id])  
   authorId   Int     // relation scalar field (used in the `@relation` attribute above)   外键  在 db 中
 }
-
+```
 ### 一些似乎不好用的东西?  
 在表格之间使用外键,非常难办;因为关系型数据库和面向对象语言在体现关系时 ,两者在 基础上的不匹配;  
 Relational: Data is typically normalized (flat) and uses foreign keys to link across entities. The entities then need to be JOINed to manifest the actual relationships.
