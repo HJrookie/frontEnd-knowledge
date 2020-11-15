@@ -107,7 +107,11 @@ K,V 这一层  , 为了解决  在同一个 UI 内为了节约字段, 而实际�
 
 我们的 resolver 是对接 http API 的,其他的一般是对接  DB,
 3. HTTP 请求去重  
+两个请求 拿到的值类型相同; 但是 server 没有 batch 接口;我们就 list all.  
+为了防止两次 lish all  
+inflight 中维护 已经发出去,还没返回的请求;  第二次就不会请求,而是订阅前面的这个请求;  
 
-inflight 中维护 已经发出去,还没返回的请求;  
+4. 性能 tracing
+client 可能写性能很差的 query  
 
  
