@@ -103,6 +103,13 @@ Trivial    chui view  不重要的 微不足道的
 coercion    胁迫  `kou,'ə tion ` 
 uphold   支持，维护(正义等); 维持，确认(原判、裁决等);  
 coerce  强迫  
+ brittle   易碎的  脆弱的  
+tailored  量身定做的  
+pitfall  困难陷阱 隐患  
+resilient  有弹性的,容易恢复的   
+cognitive	英[ˈkɒɡnətɪv] 认知的 感知的  
+formulate	英[ˈfɔːmjuleɪt    制定 规划 构想   
+manifest  明显的 显而易见的  ,表明,清楚显示  
 
 
 
