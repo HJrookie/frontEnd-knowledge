@@ -88,3 +88,26 @@ enforce   强迫  强制实施
 explicitly    明确地  
 prestigious   有声望的  声誉高地   很重要的  
 contract    合同契约  
+underlying  根本的,潜在的,隐含的  
+go over   仔细检查  认真讨论  
+exclamation  `美[ˌekskləˈmeɪʃn]`  感叹号  
+unbounded  无尽的 无穷的  
+verbose    冗长的  啰嗦的 唠叨的  
+scratch  抓破
+enforce   强迫  强制实施    
+semantically  语义化地  从语义上  
+specification  标准 规格  
+compliant   ` [kəmˈplaɪənt] `  顺从的 符合的 一致的  
+optimal  最佳的 最好的  
+Trivial    chui view  不重要的 微不足道的  
+coercion    胁迫  `kou,'ə tion ` 
+uphold   支持，维护(正义等); 维持，确认(原判、裁决等);  
+coerce  强迫  
+
+
+
+
+
+
+
+
