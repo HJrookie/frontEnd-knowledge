@@ -1,0 +1,98 @@
+### 错误案例  
+1. fragment 中 不能引用自己  
+```js
+fragment Name on Type{
+  name
+  age
+  friends{
+    ...Name
+  }
+}
+```
+2. field 要在 type 中有,不然没这个字段  
+3. fields 如果是 scalar,不能再包含 fields,如果有 sub-field, fields不能为空  
+```js
+query test{
+  vms   // no fields
+}
+```
+
+
+### Execution  
+
+You can think of each field in a GraphQL query as a function or method of the previous type which returns the next type. 
+In fact, this is exactly how GraphQL works. Each field on each type is backed by a function called the resolver which is provided by the GraphQL server developer. 
+When a field is executed, the corresponding resolver is called to produce the next value.
+
+翻译:  
+> graphql 中的每个 field 可以认为是一个 function, 接受上一个类型,返回下一个类型  
+一个字段被执行的时候,相应的 resolve 被调用来产生下一个值  
+如果字段类型是 scalar,就停下;不然,一直往下找,直到遇到 scalar  
+
+
+#### Root fields & resolvers#
+```js
+Query: {
+  human(obj, args, context, info) {
+    return context.db.loadHumanByID(args.id).then(
+      userData => new Human(userData)
+    )
+  }
+}
+```
+obj: previous obj,对于 root Query 不常用  
+args:  query中的参数  
+context:  每个 resolver 都有这个,跟上下问相关;例如 db,user 是否登录  
+info:  当前 query 中和 fields 相关的信息,以及 schema 详情  
+
+### 查询例子,下面都是在解释这个
+```js```
+{
+  human(id: 1002) {
+    name
+    appearsIn
+    starships {
+      name
+    }
+  }
+}
+```
+#### Asynchronous resolvers
+human(obj, args, context, info) {
+  return context.db.loadHumanByID(args.id).then(
+    userData => new Human(userData)
+  )
+}
+GraphQL 会实现最好的并发.等 promise完成,然后再返回结果  
+#### Trivial resolvers
+```js
+Human: {
+  name(obj, args, context, info) {
+    return obj.name
+  }
+}
+```
+obj 就是 `new Human`,直接返回 name 就可以.一些 graphql 的 libaries 就是这样子,   
+如果不提供这个 field 对应的 function,直接返回对应的值;
+#### Scalar coercion
+```js
+Human: {
+  appearsIn(obj) {
+    return obj.appearsIn // returns [ 4, 5, 6 ]
+  }
+}
+```
+This is an example of scalar coercion. The type system knows what to expect and will convert the  
+values returned by a resolver function into something that upholds the API contract.  
+In this case, there may be an Enum defined on our server which uses numbers like 4, 5,   
+and 6 internally, but represents them as Enum values in the GraphQL type system.  
+
+#### List resolver  
+```js
+Datacenter:{
+  clusters(obj,args,context,info){
+  return obj.clusterIds.map(id=>context.id.getClusterById(id)
+  .then(cluster=>new Cluster(cluster)))
+
+  }
+}
