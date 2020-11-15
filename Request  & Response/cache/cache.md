@@ -43,7 +43,7 @@ name:(parent)=>{
 ```
 
 2.2. resolve everywhere  把差异都抹平在 resolver function 中了  
-[图片](https://s3.ax1x.com/2020/11/15/Di4VAA.png)  
+![图片](https://s3.ax1x.com/2020/11/15/Di4VAA.png)  
 
 2.3 按需惰性查询  
 按需: 指定的字段才查询  
@@ -68,4 +68,37 @@ query-getVm(id:"1")-vm_name  :  "vm1"
 query-getVm(id:"1")-vmstatus  :  "runnung"  
 ```
 3.1.1 可能有的问题  
+1. 缓存更新问题(时间问题)  数据可能会过期   
+定时 polling 可以保证数据在一段时间内足够新;  
+ui 更新的时候,更新 server,以及缓存  
+2. 不同的请求拿到的数据中有相同的;  
+例如 getvms (first:0,limit:1), 和 getvms(id:"1") , 但是很难确认这两者的数据是相同的.情况太复杂了;  
+所以引入 id 这种唯一标识(可能值是 uuid,id,path等唯一的值),来完善单纯以field 来做标识的情况;  
+如下所示:  使用 typename + id 来做唯一标识,确保数据唯一性,并且通过引用,让数据被其它 field 知道  
+![图片](https://s3.ax1x.com/2020/11/15/DibNdS.png)  
 
+
+
+### 缓存策略  
+![图片](https://s3.ax1x.com/2020/11/15/DiTHeS.png)  
+
+### 缓存一致性对 UI 的作用  
+UI 会订阅缓存中的数据,订阅是自动的,订阅是通过请求来标识的,发的请求是什么,就会订阅什么  
+数据通过 typename 和 id 来唯一标识了,然后更新唯一的一份数据之后,订阅了这份数据的 ui,就会自动更新数据;
+
+
+
+
+### 不太顺利完成的事情  
+1. HTTP 请求缓存  
+K,V 这一层  , 为了解决  在同一个 UI 内为了节约字段, 而实际发出了更多请求这种场景  这两个请求看似节约  实则浪费    
+这个缓存浏览器自己可以做,但是 datalayer 可能拿到后端,所以就不依赖浏览器来做  
+![l](https://s3.ax1x.com/2020/11/15/DiLgC4.png)
+这里面的 store update  subscription 很重要  
+
+2. resolver 批量执行  
+![d](https://s3.ax1x.com/2020/11/15/DiOssI.png)  
+这里如果拿50条数据,然后每个 disks 中有4个盘,就会发200个请求  
+
+3. 
+ 
