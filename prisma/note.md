@@ -3,6 +3,8 @@ prisma 它比较了写 SQL,使用 Query Builder,以及 orm 的优点和缺点;
 
 ### 特性是什么呢   
 auto-generated and type-safe query builder  
+Prisma Client's query API is generated based on your database schema. 它的 query API 是从数据库  schema 生成的  
+可以和其它API 技术一起用,例如 Restful,GraphQL,Thrift,gRPC  
 
 - Boost productivity `by letting developers query data in natural and familiar ways`  
 - Increase confidence `with type-safety, auto-completion and a robust query API`  
@@ -18,9 +20,14 @@ const postsByAuthor = await prisma.post.findMany({
     author: { id: 42 } 
   },
   include:{
-  author: true
+    author: true        // postsByAuthor上数组中每个元素上带 author 字段,它的值是根据 这俩表之间的关系去查询
   }
 })
+
+//  结果对应的类型如下
+const postsByAuthorWithAuthorInfo: (Post & {
+    author: User | null;
+})[]
 ```
 结果:  
 ```js
