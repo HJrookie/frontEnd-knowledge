@@ -96,6 +96,7 @@ verbose    冗长的  啰嗦的 唠叨的
 scratch  抓破
 enforce   强迫  强制实施    
 semantically  语义化地  从语义上  
+
 specification  标准 规格  
 compliant   ` [kəmˈplaɪənt] `  顺从的 符合的 一致的  
 optimal  最佳的 最好的  
@@ -110,8 +111,12 @@ resilient  有弹性的,容易恢复的
 cognitive	英[ˈkɒɡnətɪv] 认知的 感知的  
 formulate	英[ˈfɔːmjuleɪt    制定 规划 构想   
 manifest  明显的 显而易见的  ,表明,清楚显示  
+respective  分别的 各自的  
+monolithic  庞大而单一的  
+streamline	英[ˈstriːmlaɪn]   v.	使成流线型; 使(系统、机构等)效率更高; (尤指) 使增产节约;  
 
-
+Nexus  `nike'səs`  关系  
+overwhelmed  充盈  难以禁受  使应接不暇  
 
 
 
