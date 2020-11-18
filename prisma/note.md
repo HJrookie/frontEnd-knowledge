@@ -70,7 +70,7 @@ const result = prisma.$graphql(query,{where:{
 }});
 ```
 
-
+--------------
 #### prisma 自定义指令
 - @craetedAt  只读
 - @updatedAt  只读
