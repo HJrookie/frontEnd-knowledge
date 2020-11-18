@@ -27,8 +27,19 @@ $exists `prisma.$exists.user({ id:"hfskfjksdfj" })`
 <details>
 <summary>
 prisma api 获取数据默认获得 scalar 类型的全部数据 如果不想,可以用 $fragment 
-	</summary>
-	<pre>
+</summary>
+<pre>
+
+[关于分页的详细文档](https://v1.prisma.io/docs/1.34/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/)
+
+<details>
+<summary>集合查询 </summary>
+<pre>
+```js
+await.prisma.usersConnection().aggregate().count()
+````
+</pre>
+
 ```js
 const fragment = `
 	fragment testFragment on User{
@@ -39,6 +50,7 @@ const fragment = `
 `
 const result = await prisma.users().$fragment(fragment) 
 ```
+</pre>
 
 ##### $graphql
 ```js
@@ -56,11 +68,6 @@ const result = prisma.$graphql(query,{where:{
 }});
 ```
 
-[关于分页的详细文档](https://v1.prisma.io/docs/1.34/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/)
-集合查询
-```js
-await.prisma.usersConnection().aggregate().count()
-````
 
 #### prisma 自定义指令
 - @craetedAt  只读
