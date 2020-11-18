@@ -45,10 +45,10 @@ const result = await prisma.users().$fragment(fragment)
 [关于分页的详细文档](https://v1.prisma.io/docs/1.34/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/)
 
 <details>
-<summary>集合查询 </summary>
+<summary>集合查询 </summary>  
 ```js
 await.prisma.usersConnection().aggregate().count()
-````
+```
 -------
 </details>
 
