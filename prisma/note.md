@@ -12,6 +12,150 @@ Prisma Client's query API is generated based on your database schema. 它的 que
 不会做 对象关系映射  
 Prisma Client provides a query API for your database schema with a focus on structural typing   
 and natural querying (in that sense, it gets closest to the data mapper pattern of traditional ORMs).  
+
+-----------------------------
+
+
+
+#### 一些特性
+一个 client 只能连一个 prisma 的 service  
+yarn generate 就可以生成 prisma client  
+upsert 其实就是创建和更新的混合 `upsertUser` 
+nested object writes, 包括 `create`,`update`,`upsert`,`deleted`,`connect`,`disconnect`,`set`(其实就是 connect和 disconnect ) 
+$exists `prisma.$exists.user({ id:"hfskfjksdfj" })`
+prisma api 获取数据默认获得 scalar 类型的全部数据 如果不想,可以用 $fragment  
+```js
+const fragment = `
+	fragment testFragment on User{
+		id
+		name
+		email
+	}
+`
+const result = await prisma.users().$fragment(fragment) 
+```
+
+##### $graphql
+```js
+const query = `
+	query {
+		user($where: UserWhereUniqueInput! ){
+			id
+			name
+			email
+		}
+	}
+`
+const result = prisma.$graphql(query,{where:{
+
+}});
+```
+
+[关于分页的详细文档](https://v1.prisma.io/docs/1.34/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/)
+集合查询
+```js
+await.prisma.usersConnection().aggregate().count()
+````
+
+#### prisma 自定义指令
+- @craetedAt  只读
+- @updatedAt  只读
+- @unique     null 是例外
+- @id         只读
+- @default  
+- @realation 
+		1. name  关系的名称  
+		2. link
+			- INLINE  外键
+			- TABLE   专门一个表来表示关系
+		3. onDelete
+		- SET_NULL 默认
+		- CASCADE
+- @db  改变 db 中 数据库/ 字段的名字  
+- @scalarList(strategy: RELATION)  当值是 scalar[] 时,必须加
+```js
+
+type User @db(name: "user") {
+  id: ID! @id
+  name: String! @db(name: "full_name")
+}
+```
+
+#### type/datamodal
+dataModal 对应数据库表,并且是 Prisma client自动生成 API 的基础
+type 之间不是用 id 来联系的,直接是 author 或者 posts,tweets,
+
+
+
+#### 定义
+node: An instantiation of a type is called a node. This term refers to a node inside your data graph.类型的实例
+object type: 就是用在 datamodal 用type 关键字来定义的  
+
+
+#### fields 的类型  
+Boolean  String Int Float ID(1个类型一个) DateTime(`ISO 8601格式`)  ENUM(只能有字母 下划线)  Json  
+
+
+
+#### onDelete 为 CASCADE 和 SET_NULL 的表现
+```js
+type User {
+  id: ID! @id
+  comments: [Comment!]! @relation(name: "CommentAuthor", onDelete: CASCADE)
+  blog: Blog @relation(name: "BlogOwner", onDelete: CASCADE)
+}
+
+type Blog {
+  id: ID! @id
+  comments: [Comment!]! @relation(name: "Comments", onDelete: CASCADE)
+  owner: User! @relation(name: "BlogOwner", onDelete: SET_NULL)
+}
+
+type Comment {
+  id: ID! @id
+  blog: Blog! @relation(name: "Comments", onDelete: SET_NULL)
+  author: User @relation(name: "CommentAuthor", onDelete: SET_NULL)
+}
+```
+1. When a User node gets deleted,
+
+- all related Comment nodes will be deleted.
+- the related Blog node will be deleted.
+2. When a Blog node gets deleted,
+
+- all related Comment nodes will be deleted.
+- the related User node will have its blog field set to null.
+
+3. When a Comment node gets deleted,
+
+- the related Blog node continues to exist and the deleted Comment node is removed from its comments list.
+- the related User node continues to exist and the deleted Comment node is removed from its comments list.
+
+
+#### @relation 的 name的使用
+```js
+type User {
+  id: ID! @id
+  writtenStories: [Story!]! @relation(name: "WrittenStories")   // 
+  likedStories: [Story!]! @relation(name: "LikedStories")  
+}
+
+type Story {
+  id: ID! @id
+  text: String!
+  author: User! @relation(name: "WrittenStories")
+  likedBy: [User!]! @relation(name: "LikedStories")
+}
+```
+
+
+
+
+
+
+
+
+
 ### 怎么用 (如果用ts 结果都是带类型的)
 1. 查询多个:
 ```js
