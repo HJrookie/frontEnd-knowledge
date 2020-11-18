@@ -25,9 +25,9 @@ nested object writes, 包括 `create`,`update`,`upsert`,`deleted`,`connect`,`dis
 $exists `prisma.$exists.user({ id:"hfskfjksdfj" })`  
 
 <details>
-<summary>
+  <summary>
 prisma api 获取数据默认获得 scalar 类型的全部数据 如果不想,可以用 $fragment 
-</summary>
+  </summary>
 	
 ```js
 const fragment = `
@@ -39,6 +39,7 @@ const fragment = `
 `
 const result = await prisma.users().$fragment(fragment) 
 ```
+</details>
 
 
 [关于分页的详细文档](https://v1.prisma.io/docs/1.34/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/)
@@ -49,6 +50,7 @@ const result = await prisma.users().$fragment(fragment)
 await.prisma.usersConnection().aggregate().count()
 ````
 -------
+</details>
 
 
 
