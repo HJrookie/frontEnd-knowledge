@@ -21,9 +21,9 @@ and natural querying (in that sense, it gets closest to the data mapper pattern 
 一个 client 只能连一个 prisma 的 service  
 yarn generate 就可以生成 prisma client  
 upsert 其实就是创建和更新的混合 `upsertUser` 
-nested object writes, 包括 `create`,`update`,`upsert`,`deleted`,`connect`,`disconnect`,`set`(其实就是 connect和 disconnect ) 
-$exists `prisma.$exists.user({ id:"hfskfjksdfj" })`
-prisma api 获取数据默认获得 scalar 类型的全部数据 如果不想,可以用 $fragment  
+nested object writes, 包括 `create`,`update`,`upsert`,`deleted`,`connect`,`disconnect`,`set`(其实就是 connect和 disconnect )   
+$exists `prisma.$exists.user({ id:"hfskfjksdfj" })`  
+prisma api 获取数据默认获得 scalar 类型的全部数据 如果不想,可以用 $fragment    
 ```js
 const fragment = `
 	fragment testFragment on User{
