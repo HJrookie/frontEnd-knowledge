@@ -10,7 +10,7 @@ posts: [Post!]!  // ok
 }
 ```
 <summary> 函数大概写法
-  </dummary>
+  </summary>
   <details>
 ```js
 // template
