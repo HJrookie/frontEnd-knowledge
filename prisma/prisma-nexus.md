@@ -9,8 +9,10 @@ posts: [{name:stirng;title:string; }]   // not permitted
 posts: [Post!]!  // ok
 }
 ```
-<summary> 函数大概写法</summary>
-  <details>
+<details> 
+  <summary>
+ ####    函数大概的写法
+  </summary>
 ```js
 // template
 const value= FunCName({
