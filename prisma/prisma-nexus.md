@@ -9,8 +9,7 @@ posts: [{name:stirng;title:string; }]   // not permitted
 posts: [Post!]!  // ok
 }
 ```
-<summary> 函数大概写法
-  </summary>
+<summary> 函数大概写法</summary>
   <details>
 ```js
 // template
