@@ -11,7 +11,7 @@ posts: [Post!]!  // ok
 ```
 <details> 
   <summary>
- ####    函数大概的写法
+  函数大概的写法
   </summary>
 ```js
 // template
