@@ -13,6 +13,7 @@ posts: [Post!]!  // ok
   <summary>
   函数大概的写法
   </summary>
+  
 ```js
 // template
 const value= FunCName({
@@ -173,6 +174,7 @@ export const createUser = extendType({
 })
 ```
 
+
 </details>
 
 
@@ -190,6 +192,35 @@ const User = prismaObjectType({  //目地是隐藏 email
   },
 });
 改了 生成的积木之后,要确保他们在  makePrismaSchema  的参数里  
+
+//较为复杂的
+type User {
+  id: ID!
+  name: String
+  posts(
+    after: String
+    before: String
+    first: Int
+    last: Int
+    orderBy: PostOrderByInput
+    skip: Int
+    where: PostWhereInput
+  ): [Post!]
+}
+// 为了隐藏分页字段
+const User = prismaObjectType({
+  name: 'User',
+  definition(t) {
+    t.prismaFields([
+      'id',
+      'name',
+      {
+        name: 'posts',
+        args: ['where', 'orderBy']
+      }
+    ])
+  }
+})
 ```
 
 #### 在 modal上添加 computed fields  
@@ -227,4 +258,43 @@ const Post = prismaObjectType({
     })
   }
 })
+```
+
+#### 在 API 上添加方法,以及实现
+```js
+type Mutation {
+  createDraft(title: String!, content: String): Post!
+  publish(id: ID!): Post
+}
+Here's how to implement them in your GraphQL server code:
+
+const Mutation = prismaObjectType({
+  name: "Mutation",
+  definition(t) {
+    t.prismaFields(["createUser", "updateUser", "deleteUser", "deletePost"]);
+    t.field("createDraft", {
+      type: "Post",
+      args: {
+        title: stringArg(),
+        content: stringArg({ nullable: true }),
+      },
+      resolve: (parent, { title, content }, ctx) => {
+        return ctx.prisma.createPost({ title, content });
+      },
+    });
+    t.field("publish", {
+      type: "Post",
+      nullable: true,
+      args: {
+        id: idArg(),
+      },
+      resolve: (parent, { id }, ctx) => {
+        return ctx.prisma.updatePost({
+          where: { id },
+          data: { published: true },
+        });
+      },
+    });
+  },
+});
 ```
