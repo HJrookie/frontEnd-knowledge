@@ -1,5 +1,5 @@
 #### 作用
-可以重新定义一些类型的 fields
+可以重新定义一些类型的 fields  或者说是在 modal上定义 computed fields  
 #### 为什么需要这个
 在 grahpql规范里面,不能够嵌套对象,因此只能拆分出来写,但是拆出来写不是个好的事情,因为 type 是和 table 一一对应的,这样子会生成另外的表格;  
 但是我们不需要这个表格;因此我们将其存成 Json, 但是我们期望前端得到正确的类型;所以用 nexus 的api 来重新定义类型  
@@ -174,3 +174,57 @@ export const createUser = extendType({
 ```
 
 </details>
+
+
+-----------
+
+
+
+
+#### prismaObjectType 来隐藏modal 的 fields
+```js   
+const User = prismaObjectType({  //目地是隐藏 email 
+  name: "User",
+  definition(t) {
+    t.prismaFields(["id", "name", "posts"]);   // 等价与  t.prismaFields({filter: ["email"]})
+  },
+});
+改了 生成的积木之后,要确保他们在  makePrismaSchema  的参数里  
+```
+
+#### 在 modal上添加 computed fields  
+```js
+const Post = prismaObjectType({
+  name: "Post",
+  definition(t) {
+    t.string("uppercaseTitle", {
+      resolve: ({ title }, args, ctx) => title.toUpperCase(),   
+    });
+  },
+});
+改了 生成的积木之后,要确保他们在  makePrismaSchema  的参数里  
+
+```
+
+####  Renaming fields on a model 重命名
+```js
+const Post = prismaObjectType({
+  name: 'Post',
+  definition(t) {
+    t.prismaFields([
+      '*',
+      {
+        name: 'content',
+        alias: 'body'
+      }
+    ])
+    t.string('anotherComputedField', {
+      resolve: async ({ title }, args, ctx) => {     // 如果这里需要更多的数据,可以这么写
+        const databaseInfo = await ctx.prisma.someOperation(...)
+        const result = doSomething(databaseInfo)
+        return result
+      }
+    })
+  }
+})
+```
