@@ -9,8 +9,10 @@ posts: [{name:stirng;title:string; }]   // not permitted
 posts: [Post!]!  // ok
 }
 ```
-
+<summary>
 #### 函数大概写法
+  </dummary>
+  <details>
 ```js
 // template
 const value= FunCName({
@@ -170,3 +172,5 @@ export const createUser = extendType({
   }
 })
 ```
+
+</details>
