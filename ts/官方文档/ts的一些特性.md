@@ -209,3 +209,24 @@ let data: Json = {
   values: [0, 10, 20]
 }
 ```
+
+#### 类的权限控制
+public 所有地方都可以访问   
+protected  当前类以及子类可以访问  
+private  只有当前类可以访问  
+```js
+class Animal {   // 父类
+  private name;   // private 只能在父类中被访问
+  public constructor(name) {
+    this.name = name;
+  }
+}
+
+class Cat extends Animal {
+  public name;   // 在子类中可以重新定义 name,但是没有意义;  [相关的问题呢](https://stackoverflow.com/questions/35708845/typescript-derived-class-cannot-have-the-same-variable-name)
+  constructor(name) {
+    super(name);                //  这里是调用父类constructor 来初始化 也就是new 出来的对象中的 name 是有值的  
+    console.log(this.name);     // 这里就是访问 父类的 name 了,因为是继承的
+  }
+}
+```
