@@ -232,4 +232,10 @@ class Cat extends Animal {
 }
 
 ```
-我们
+我们可以在 父类中设置属性为 private,但是设置 set 和 get方法,这样子就可以修改它的属性的值      
+
+
+
+
+
+
