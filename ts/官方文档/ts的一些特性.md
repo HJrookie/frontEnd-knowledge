@@ -3,7 +3,9 @@ index signature    ==>   对象中 property 对应的值的类型;
 sides 部分  
 
 #### note
-函数检查应该不检查 形参的 key 是否一致,只是检查参数顺序 及类型
+函数检查应该不检查 形参的 key 是否一致,只是检查参数顺序 及类型  
+js 中函数 默认有 name 属性  
+类型断言 A as B, A可以是B的子集,或者 B 是 A 的子集.   完全相同应该不用断言  
 ### 0.
 
 
@@ -100,52 +102,24 @@ myArray[2] = "Mallory"; // error!   不允许   You can’t set myArray[2] becau
 
 ```
 ##### Class Types
-```ts
-interface Human{       // 这里也可以是 type 来定义,但是不能是 Class  
-    name:string;
-    setName: (name:string)=>void;
-    getName: ()=>string;
+对于class,它有两个类型,type of static side,typeof instance side   
+,interface 定义了 类的 public side  
+```js
+interface ClockConstructor {   // 例子,
+  new (hour: number, minute: number);   // constructor 在 static side  
 }
 
-
-class Man implements Human{   // 这个接口定义了共有的成员,不能用来检查是否有某些私有成员
-    name:string;
-    getName(){
-        return this.name;
-    }
-    setName(name:string){
-        this.name = name;
-    }
-    constructor(name:string){
-        this.name = name;
-    }
+class Clock implements ClockConstructor {
+  currentTime: Date;
+  constructor(h: number, m: number) {}   // 这里正确实现了,但是会报错说没有实现.  因为当class 实现 interface 的时候,只有 instance side 会被检查,构造函数在 static side,所有没有被检查  
 }
-
-
-const test = new Man("helloworld");
-console.log(test)
-test.setName('hhh');
-console.log(test)
-
 ```
 
 Class 构造函数签名  constructor check 的例子  ,
 > 构造函数属于 Class 的 静态部分;不会被检查;因此 Clock 实现了构造函数的方法,但是没有被检查出来,所以报错了;  
-```ts
-interface ClockConstructor {
-  new (hour: number, minute: number);
-}
 
-class Clock implements ClockConstructor {
-//                Class 'Clock' incorrectly implements interface 'ClockConstructor'.
-  //                Type 'Clock' provides no match for the signature 'new (hour: number, minute: number): any'.
-  currentTime: Date;
-  constructor(h: number, m: number) {}
-
-```
-
-
-另一个 Class 的例子  关于累的静态部分和实例部分  
+#### 如果我们想检查类的 static side 怎么办
+方法1:  
 ```js
 interface ClockConstructor {
   new (hour: number, minute: number): ClockInterface; // 属于类的静态 部分,不会被检测,叫做 构造函数签名  constructor signature  
@@ -156,7 +130,7 @@ interface ClockInterface {
 } 
 
 function createClock(
-  ctor: ClockConstructor,
+  ctor: ClockConstructor,    // 在这里检查 static side 的类型是否一致  
   hour: number,
   minute: number
 ): ClockInterface {
@@ -182,6 +156,68 @@ let analog = createClock(AnalogClock, 7, 32);
 
 console.log(digital.hour)
 ```
+
+--------------
+
+方法2:  
+```js
+interface ClockConstructor {
+  new (hour: number, minute: number): ClockInterface;
+}
+
+interface ClockInterface {
+  tick(): void;
+}
+
+const Clock: ClockConstructor = class Clock implements ClockInterface {
+  constructor(h: number, m: number) {}
+  tick() {
+    console.log("beep beep");
+  }
+};
+```
+
+#### Hybrid Types
+可以创建出 一个即是函数,也是对象的变量;  
+```js
+//js 中可以这么写
+var a=(v)=>{
+  return v*v;
+}
+a.name = "hello";
+a.test = ()=>{return 11}
+
+// 对应 ts 里面  
+interface Test {
+  (value: number): number;
+  firstName: string;    // js 中函数类型默认有 name 属性.而且只读,这个值不能是 name
+  getName(): string;
+}
+
+function formatTest(): Test {
+  let test = function (value: number) { return value * value; } as Test;    // 这个地方不能用箭头函数,这个断言是可以的
+  test.firstName = "test";
+  test.getName = () => { return "123" }
+  return test;
+}
+
+const t = formatTest();
+console.log(t(2))
+```
+#### 类型断言的细节  
+```js
+interface Test {
+  name: string;
+  age: number;
+}
+const value = { name: "hello" } as Test;  // ok
+const value2 = { name: "hello", test: 123 } as Test;  // not ok
+const value3 = { name: "hello", age: 12, test: 123 } as Test;  // OK
+
+```
+#### Interfaces Extending Classes
+会继承 class 上所有的属性和方法;包括私有的和 protected 的;所以只有这个类,即其子类才可以实现这个接口     
+
 
 
 ### recursive type references 递归类型引用
