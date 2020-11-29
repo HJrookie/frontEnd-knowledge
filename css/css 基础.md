@@ -107,3 +107,10 @@ background-clip: 可以设置应用到 content-box,padding-box
 
 用的时候 var(--custom-color,'default value')
 ```
+
+11. overflow  
+overflow: hidden; visible ;auto; scrool;    
+- hideen 隐藏多余的,不滚动    
+- visible  显示多余内容.无滚动  
+- auto  隐藏内容,显示滚动条;  (mac的滚动条默认自动)  
+- scrool  隐藏内容,一直显示滚动条  
