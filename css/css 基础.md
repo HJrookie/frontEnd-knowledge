@@ -64,8 +64,8 @@ position:relative;
 ```css
 需要在块级元素上(也可以不是)  
 overflow: hidden;  
-text-overflow: ellipse;
-white-wrap: unwrap;
+text-overflow: ellipse;  
+white-wrap: unwrap;  
 可能由于 里面 是个 span 包裹的 icon,以及一段 span 包裹的文字,一直失败.  把文字放到 div 里,然后加上上面的样式  
 ```
 
@@ -77,7 +77,7 @@ white-wrap: unwrap;
 ```
 
 
-7. transition :  要变化的属性  2s ease-in-out;
+7. transition :  要变化的属性  2s ease-in-out;  
 ```css
 .container{
 height: 100px;
@@ -86,4 +86,24 @@ transition: height 2s ease-in-out;
     height: 40px;
   }
 }
+```
+
+8. word-break  
+```css
+0. normal 默认的  字母不换行,CJK 换行  
+1. break-all    非 CJK 按照字母换行  CJK 跟到非 CJK 后面,然后也会换行   
+2. break-word   不推荐使用了;非 CJK 按照单词换行,CJK 另起一行,也会换行  
+3. keep-all      CJK 不换行,字母同 normal,就是也不换行
+```
+
+9. background-color
+他默认会应用到 content,padding,border, 上 
+background-clip: 可以设置应用到 content-box,padding-box  
+
+
+10. var 变量  
+```css
+--custom-color: #fae83d;  //定义变量,变量名是大小写敏感的    
+
+用的时候 var(--custom-color,'default value')
 ```
