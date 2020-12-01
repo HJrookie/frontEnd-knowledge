@@ -41,7 +41,16 @@ export const  InputType = inputObjectType({
 ```
 4. prismaInputObjectType 
 
-
+```js
+export const TestUserUpdateInputType = prismaInputObjectType({
+  name: 'TestUserOrderByInput',  
+  // 这里可以是 UserCreateInput,UserUpdateInput,UserWhereInput,UserUpdateManyMutationInput,UserWhereUniqueInput
+  // 不能是 UserOrderByInput,
+  definition(t) {
+    t.prismaFields(['*']);
+  },
+});
+```
 
 
 
