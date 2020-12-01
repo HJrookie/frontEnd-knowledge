@@ -15,7 +15,7 @@ export const TestUser = objectType({
 这两个函数让连接`prisma schema` 和`nexus schema` 变得更简单,还提供了相当直接的方法来修改 prisma models ,fields,和 被包含在nexus schema 中的input参数      但是为什么呢?      
 ```js
 export const TestUserDef = prismaObjectType({
-  name: 'TestUser',   // 这里的名字必须是 datamodel 中的 type 的其中一个
+  name: 'TestUser',   //  The name of the Prisma model or generated CRUD GraphQL type
   definition(t) {
     t.prismaFields(['*']);
     t.field('data', {
