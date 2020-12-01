@@ -15,7 +15,7 @@ export const TestUser = objectType({
 这两个函数让连接`prisma schema` 和`nexus schema` 变得更简单,还提供了相当直接的方法来修改 prisma models ,fields,和 被包含在nexus schema 中的input参数      但是为什么呢?      
 ```js
 export const TestUserDef = prismaObjectType({
-  name: 'TestUser',   // 这里的名字必须是 model 中的 type 的其中一个
+  name: 'TestUser',   // 这里的名字必须是 datamodel 中的 type 的其中一个
   definition(t) {
     t.prismaFields(['*']);
     t.field('data', {
@@ -32,7 +32,7 @@ export const TestUserDef = prismaObjectType({
 这个函数可以定义一个复杂的对象,这个对象可以被作为输入值,和`object types`不同的是,它没有参数,因此没有 resolvers 和 `backing types`
 ```js
 export const  InputType = inputObjectType({
-  name: "TestUserInputType",   // 这里的 name 也不能和 已有的类型相同  
+  name: "TestUserInputType",   //可以是自定义的名字,不能和 已有的类型相同,也可以是各种Input
   definition(t){
     t.string("key",{required: true})
     t.int('age')
@@ -45,7 +45,7 @@ export const  InputType = inputObjectType({
 export const TestUserUpdateInputType = prismaInputObjectType({
   name: 'TestUserOrderByInput',  
   // 这里可以是 UserCreateInput,UserUpdateInput,UserWhereInput,UserUpdateManyMutationInput,UserWhereUniqueInput
-  // 不能是 UserOrderByInput,
+  // 不能是 UserOrderByInput,或者 TestUser 这种 datamodel 中的 type
   definition(t) {
     t.prismaFields(['*']);
   },
