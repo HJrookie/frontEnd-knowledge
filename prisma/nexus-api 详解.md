@@ -32,7 +32,7 @@ export const TestUserDef = prismaObjectType({
 这个函数可以定义一个复杂的对象,这个对象可以被作为输入值,和`object types`不同的是,它没有参数,因此没有 resolvers 和 `backing types`
 ```js
 export const  InputType = inputObjectType({
-  name: "TestUserInputType",
+  name: "TestUserInputType",   // 这里的 name 也不能和 已有的类型相同  
   definition(t){
     t.string("key",{required: true})
     t.int('age')
