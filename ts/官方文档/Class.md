@@ -92,7 +92,9 @@ console.log(test.name)
 #### 抽象类  abstract class
 - 其他类可能继承它  
 - 不能被实例化  
-- 可以包含一些方法的实现,但是 接口 不可以   
+- 可以包含一些方法的实现,但是 接口 不可以
+- 一个类继承了抽象类,就要实现它里面的 abstract 的方法
+- 一个类 implements 了 抽象类,就要 重写它里面所有的属性和方法
 ```js
 abstract class Department {
   constructor(public name: string) {}
