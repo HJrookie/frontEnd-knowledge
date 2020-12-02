@@ -123,4 +123,13 @@ undertake  承担 从事 负责
 
 
 
-in tandem  一前一后地  协同地
+in tandem                                                                                             一前一后地  协同地    
+glossary                                                                                                词汇表 术语表     
+differentiate                                                                                                    shit  区分,分辨    
+notation                                                                                                    符号 记号  
+depicted                                                                                                    描绘 描写 描述 刻画    
+consent                                                                                                     同意 批准 准许  
+constitute                                                                                                    被认为是,被当做,组成,成立    
+disignated  `dai'zig nated`                                                                                 命名; 指定; 选定，指派，委任(某人任某职); 标明; 标示; 指明;    
+as though/ if                                                                                                      好像     
+depicted                                                                                                    描绘 描写 描述 刻画  
