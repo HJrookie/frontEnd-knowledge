@@ -1,5 +1,6 @@
 imperative                                                                                                紧急的,迫切的    
-resume                                                                                               v: 中断后恢复,重新开始       n: 摘要,概述
+resume                                                                                               v: 中断后恢复,重新开始       n: 摘要,概述  
+nullish coalesce               空值合并  
 radial                                                                                                放射状的..辐射状的        
 linear                                                                                                直线的    线状的        
 gradient                                                                                                坡度,斜率,变化率        
