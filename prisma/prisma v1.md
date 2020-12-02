@@ -115,14 +115,14 @@ Boolean  String Int Float ID(1个类型一个) DateTime(`ISO 8601格式`)  ENUM(
 ```js
 type User {
   id: ID! @id
-  comments: [Comment!]! @relation(name: "CommentAuthor", onDelete: CASCADE)
-  blog: Blog @relation(name: "BlogOwner", onDelete: CASCADE)
+  comments: [Comment!]! @relation(name: "CommentAuthor", onDelete: CASCADE)   这里的 onDelete 决定了 当 user 的实例被删除时,comments 的表现
+  blog: Blog @relation(name: "BlogOwner", onDelete: CASCADE)    // 这里的 onDelete 决定了 当 user 的实例被删除时,blog 的表现
 }
 
 type Blog {
   id: ID! @id
-  comments: [Comment!]! @relation(name: "Comments", onDelete: CASCADE)
-  owner: User! @relation(name: "BlogOwner", onDelete: SET_NULL)
+  comments: [Comment!]! @relation(name: "Comments", onDelete: CASCADE)  // 这里的 onDelete 决定了 当 Blog 的实例被删除时,Comment 的表现
+  owner: User! @relation(name: "BlogOwner", onDelete: SET_NULL)   // 这里的 onDelete 决定了 当 Blog 的实例被删除时,User 的表现
 }
 
 type Comment {
