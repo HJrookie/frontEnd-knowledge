@@ -74,7 +74,7 @@ const result = prisma.$graphql(query,{where:{
 #### prisma 自定义指令
 - @craetedAt  只读
 - @updatedAt  只读
-- @unique     null 是例外
+- @unique     可以同时为 null
 - @id         只读
 - @default  
 - @realation 
