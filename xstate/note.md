@@ -86,7 +86,7 @@ const lightMachine = Machine({
 
 -------
 
-···js
+```js
 const wordMachine = Machine({
   id: 'word',
   type: 'parallel',
@@ -166,4 +166,4 @@ const nextState = wordMachine.transition(
 //   underline: 'on',
 //   list: 'bullets'
 // }
-···
+```
