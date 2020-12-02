@@ -85,6 +85,19 @@ const result = prisma.$graphql(query,{where:{
 		3. onDelete
 		- SET_NULL 默认
 		- CASCADE
+- @relation的一些限制
+```js
+type TypeA {
+  id: ID! @id
+  objB: TypeB   @relation(link: INLINE)
+}
+
+type TypeB {
+  id: ID! @id
+  objA: [TypeA!]!     @relation(link: INLINE) // 这里不能加 @realtion
+}
+		
+```
 - @db  改变 db 中 数据库/ 字段的名字  
 - @scalarList(strategy: RELATION)  当值是 scalar[] 时,必须加
 ```js
