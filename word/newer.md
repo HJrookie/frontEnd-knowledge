@@ -144,7 +144,7 @@ main point                                                                      
 while                                                                                                 一段时间     
 instantaneous                                                                                                 立即的 立刻的   
 Conversely                                                                                                 相反的    
-synonym                                                                                                 同义词  
+interact                                                                                                 沟通交流 相互合作    
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
