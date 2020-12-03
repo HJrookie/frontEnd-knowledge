@@ -133,17 +133,17 @@ constitute                                                                      
 disignated  `dai'zig nated`                                                                                 命名; 指定; 选定，指派，委任(某人任某职); 标明; 标示; 指明;    
 as though/ if                                                                                                      好像     
 depicted                                                                                                    描绘 描写 描述 刻画  
-synonym                                                                                                 同义词  
+synonym      ` sɪnənɪm `                                                                                       同义词  
 
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
+nitty gritty                                                                                                 本质  基本事实     
+parlance                                                                                                 说法 用语  词语    
+caption                                                                                                 图片 漫画 等的说明文字    
+analogy   `[əˈnælədʒ`                                                                                                  比喻 类推    
+by way of                                                                                                途径 为了  当做 意在     
+main point                                                                                                 要点 大纲      
+while                                                                                                 一段时间     
+instantaneous                                                                                                 立即的 立刻的   
+Conversely                                                                                                 相反的    
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
