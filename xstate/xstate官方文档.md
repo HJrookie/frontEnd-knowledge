@@ -44,11 +44,10 @@ on:{			 trigger:{		target:['.mode.active','.status.enabled'] // 		}									}
 fallback 的 trigger,会被任何 trigger 触发,
 
 
-###### send函数
-  只是个 action creator,是个纯函数,返回了一个 action object,不会立即发送一个 event; 而是把 event 放到 external event 队列中,在 interpreter 执行 下一步时 event 会被 send  
+
 ###### self transition 
 
-3. event     触发状态转换的 trigger   
+#### 3. event     触发状态转换的 trigger   
 ```js
 // 一般是这样的形式 只有 type 可以简写为 "keydown"
 const keyDownEvent = {  
@@ -79,43 +78,57 @@ on: {
       }
 ```
 
-4. action   一般在进入或者离开一个状态时被调用,它被执行的越快越好,因此一般是拿来开始或者终止 异步任务,例如发送或者终止 request,简单的同步任务也可以  
-
+#### 4. action   
+触发然后不管的副作用;,进入或者离开某个状态时.他会被执行;或者 transition 时执行  
+一般在进入或者离开一个状态时被调用,它被执行的越快越好,因此一般是拿来开始或者终止 异步任务,例如发送或者终止 request,简单的同步任务也可以  
+有三种类型:  
+- entry 进入 state 时执行  
+- exit 离开时执行  
+- transition actions 当 transition 发生的时候执行  
 ```js
-
-
-const machine = Machine({
-  id: 'age',
-  context: { age: 12 }, // age 12
-  initial: 'init',
-  states: {
-    init: {
-      on: {
-        "inc":{
-          actions:["inc"],
-        },
-          "des": {
-            actions: ["des"]
+const triggerMachine = Machine(
+  {
+    id: 'trigger',
+    initial: 'inactive',
+    states: {
+      inactive: {
+        on: {
+          TRIGGER: {
+            target: 'active',
+            // transition actions
+            actions: ['activate', 'sendTelemetry']
           }
+        }
+      },
+      active: {
+        // entry actions
+        entry: ['notifyActive', 'sendTelemetry'],
+        // exit actions
+        exit: ['notifyInactive', 'sendTelemetry'],
+        on: {
+          STOP: 'inactive'
+        }
       }
-    },
+    }
+  },
+  {
+    actions: {
+      // action implementations
+      activate: (context, event) => {
+        console.log('activating...');
+      },
+      notifyActive: (context, event) => {
+        console.log('active!');
+      },
+      notifyInactive: (context, event) => {
+        console.log('inactive!');
+      },
+      sendTelemetry: (context, event) => {
+        console.log('time:', Date.now());
+      }
+    }
   }
-});
-const service= interpret(machine.withContext({age: 100}).withConfig({
-  actions:{
-    inc: assign({age: (context,event)=>{  // 这里的 inc  和 上面的 actions:["inc"] 是对应的 ,这里的 age 意思是 修改 context 中 age 的值
-      console.log('inc')
-      return  context.age + 10; 
-    }}),
-     des: assign({age: (context,event)=>{
-      return  context.age - 10;
-    }})
-  }
-}))
-.onTransition( ({context})=>{console.log(context.age )})     // 这个相当于是调试的时候用.每次有 transition 就会执行
-.start()
-
-service.send("inc")
+);
 
 ```
 5. activities  执行时间较长的一个 action,可以被开始,或者关闭,可以是一个频繁执行的检查,在进入state node 时开始执行,离开时,停止   
