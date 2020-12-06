@@ -45,8 +45,6 @@ fallback 的 trigger,会被任何 trigger 触发,
 
 
 
-###### self transition 
-
 #### 3. event     触发状态转换的 trigger   
 ```js
 // 一般是这样的形式 只有 type 可以简写为 "keydown"
@@ -79,12 +77,30 @@ on: {
 ```
 
 #### 4. action   
-触发然后不管的副作用;,进入或者离开某个状态时.他会被执行;或者 transition 时执行  
+触发然后不管的副作用;进入或者离开某个状态时.他会被执行;或者 transition 时执行   
 一般在进入或者离开一个状态时被调用,它被执行的越快越好,因此一般是拿来开始或者终止 异步任务,例如发送或者终止 request,简单的同步任务也可以  
-有三种类型:  
+###### 有三种类型:  
 - entry 进入 state 时执行  
 - exit 离开时执行  
 - transition actions 当 transition 发生的时候执行  
+###### 发生 transition 时的执行顺序呢?        
+1. 先执行当前状态的exit 中定义的 actions  
+2. 当前状态 transition 中定义的 actions (transition actions)    
+3. 下一个状态的 entry  
+###### 什么时候用 entry/exit ,什么时候 用 transition actions
+entry/exit 会在每次进入或者离开该状态时执行,要确保 这个 action 只依赖于当前的 state node,不能依赖于 前一个,后一个 node  
+transition action, 只有当 transition 发生时会执行,确保 action 依赖 event 和它所处的节点  
+###### 关于 send 方法
+它不是立即 send 一个 event,而是创建了一个 action object,告诉 service(即 `interpreted machine`), to 把 event 发送给他自己;(这里文档读不懂....) [文档](https://github.com/davidkpiano/xstate/blob/master/docs/guides/actions.md#send-action)
+###### action creator
+有很多 action creator,send 只是最常见的一种.    
+###### self transitions 
+transition  action 可以是 internal 的,当然,他们默认是 external 的  
+如果是 internald 的,   
+    一个 internal transition 不会退出,或者重新进入自身,因此 state node 上的 entry 和 exit 不会被再次执行,只有定义在 transition 上的 actions 会被执行    
+对于默认的 external  
+    state node 上的 entry 和 exit action 都会被再次执行   
+[在线 DEMO ](https://xstate.js.org/viz/?gist=7480b8a64153f9e17e0e5c138eceaea5)
 ```js
 const triggerMachine = Machine(
   {
@@ -131,7 +147,9 @@ const triggerMachine = Machine(
 );
 
 ```
-5. activities  执行时间较长的一个 action,可以被开始,或者关闭,可以是一个频繁执行的检查,在进入state node 时开始执行,离开时,停止   
+
+#### 5. activities 
+执行时间较长的一个 action,可以被开始,或者关闭,可以是一个频繁执行的检查,在进入state node 时开始执行,离开时,停止   
 在同一个 parent 下的 transition 不会重启  activities, ;只会 stop 一次,不会被多次 stop; 
 ```js
 const toggleMachine = Machine(
