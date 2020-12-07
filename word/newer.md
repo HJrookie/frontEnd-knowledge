@@ -145,19 +145,19 @@ while                                                                           
 instantaneous                                                                                                 立即的 立刻的   
 Conversely                                                                                                 相反的    
 interact                                                                                                 沟通交流 相互合作    
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
+simulate                                                                                                 模拟  假冒    
+reinvent                                                                                                 重新发明, 造轮子    
+collectively                                                                                              集体地；共同地；总起来说   
 
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
+likewise                                                                                                同样地    
+transient                                                                                                 短暂的    
+stimulus                                                                                                 促进 刺激,(经济)    
+signify                                                                                                 表明 说明    
+algebraic  effects                                                                                                代数学的    
+fire-and-forget                                                                                               发出信号 后 不管    
+discrete                                                                                               单一的 分离的    
+dispose                                                                                                 处置 安排    
+superseded                                                                                                 取代 替代  
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
