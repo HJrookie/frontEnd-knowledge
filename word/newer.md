@@ -158,7 +158,7 @@ fire-and-forget                                                                 
 discrete                                                                                               单一的 分离的    
 dispose                                                                                                 处置 安排    
 superseded                                                                                                 取代 替代  
-synonym                                                                                                 同义词  
+overlap                                                                                                  重叠    
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
