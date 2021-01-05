@@ -159,22 +159,22 @@ discrete                                                                        
 dispose                                                                                                 处置 安排    
 superseded                                                                                                 取代 替代  
 overlap                                                                                                  重叠    
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
+semantics                                                                                                 语义  
+elimination                                                                                                 排除,淘汰  
+terse                                                                                                 简要的,简短生硬的    
 
 
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
-synonym                                                                                                 同义词  
+postfix                                                                                                 后缀,后置    
+short circuit                                                                                                 短路  
+circuit                                                                                                 环形电路  
+alias   `ˈeɪ.li.əs`                                                                                              化名 ,别名  
+mind-bending                                                                                                 很难理解的东西  
+polymophric `[ˌpɑˌliˈmɔrfɪk]`                                                                                               多态    
+resembles                                                                                                 看起来像  
+Homomorphism                                                                                                 同态  
+trivial                                                                                                 微不足道的    
+unary                                                                                                 一元的  
+Distributive property                                                                                                 分配律    
 synonym                                                                                                 同义词  
 synonym                                                                                                 同义词  
 
