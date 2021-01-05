@@ -158,3 +158,43 @@ type HomTest1<T> = {
 T extends true/ false 可以这么用  
 类型推断的话, 如果编译器可以推断出来,也就是说 信息足够, 就会立即 推断出 信息;  
 否则, 像泛型函数中, 类型不确定,自然无发推断出来了;  
+
+
+#### 12. Distributive conditional types
+其实就是 条件类型和 union type 结合起来了,情况 变得有些 复杂起来  
+```js
+type Num = 1|2|3|4|5|'ggg';
+type NumResult<T> = T extends number ? T : 'sss';
+
+type RRR2 = NumResult<Num>
+// = "sss" | 1 | 2 | 3 | 4 | 5
+```
+For example, an instantiation of `T extends U ? X : Y` with the type argument `A | B | C `for T   
+is resolved as `(A extends U ? X : Y) | (B extends U ? X : Y) | (C extends U ? X : Y)`.
+
+##### 13.1 不懂的写法
+```js
+type BoxedValue<T> = { value: T };
+type BoxedArray<T> = { array: T[] };
+type Boxed<T> = T extends any[] ? BoxedArray<T[number]> : BoxedValue<T>;   // 这个T[number]
+
+type T1 = Boxed<string>;
+//   ^ = type T1 = {
+//       value: string;
+//   }
+type T2 = Boxed<number[]>;
+//   ^ = type T2 = {
+//       array: number[];
+//   }
+type T3 = Boxed<string | number[]>;
+//   ^ = type T3 = BoxedValue | BoxedArray
+```
+##### 13.2 类型推断可以合到一起  , 同一个变量 来 接受不同的 推断  
+```js
+type Foo<T> = T extends { a: infer U; b: infer U } ? U : never;
+
+type T1 = Foo<{ a: string; b: string }>;
+//   ^ = type T1 = string
+type T2 = Foo<{ a: string; b: number }>;
+//   ^ = type T2 = string | number
+```
