@@ -120,3 +120,41 @@ class ScientificCalculator extends BasicCalculator {
 let v = new ScientificCalculator(2).multiply(5).sin().add(1).currentValue();  
 ```
 上面的代码之所以可以工作,是因为 基类中 返回了 this,如果没有这个 this, 那么 multiply 返回的就是 基类的对象,它是没有 sin 这个方法的,  
+
+8. index types  
+keyof T 叫做 `index type query operator`     
+ T[K],  叫做 `the indexed access operator`  
+ 要注意 : 
+```js
+interface Dictionary<T> {
+  [key: string]: T;
+}
+keyof Dictionary<number> 得到的 类型是 string | number     https://www.typescriptlang.org/docs/handbook/advanced-types.html#index-types-and-index-signatures
+
+如果是 
+interface Dictionary<T> {
+  [key: number]: T;
+}
+那么 keyof Dictionary<string 或者任何>的结果 都是 number  
+
+```
+
+9. keyof any 可以用来 index object, 其实就等于  `string | number | symbol`
+
+10 . homomorphism 是啥  
+https://stackoverflow.com/questions/59790508/what-does-homomorphic-mapped-type-mean#comment105728020_59791889
+Readonly, Partial and Pick 是 符合 `homomorphism` 的,
+就是说 要让编译器知道 你想 从一个 已有的 对象中复制它的 key,这样子 编译器就可以获取到它的 `readonly` 以及 `optional` 的状态了,  
+那么他就是 `homomorphic` 的. 否则,就不是. 简单来说, 要这么写, 
+```js
+type HomTest1<T> = {
+  [K in keyof T(这里需要是一个对象,前面的格式不能变)]: T[K]
+}
+```
+这么写了之后,他就是 `homomorphic ` 的了.. 当然 ,它也叫  `structure preserver` 
+
+11. T extends  U 啥意思 
+其实就是 T 可以被 赋值给 U, assignable to U 
+T extends true/ false 可以这么用  
+类型推断的话, 如果编译器可以推断出来,也就是说 信息足够, 就会立即 推断出 信息;  
+否则, 像泛型函数中, 类型不确定,自然无发推断出来了;  
