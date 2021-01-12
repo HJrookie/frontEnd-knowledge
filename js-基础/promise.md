@@ -17,10 +17,18 @@ promise对象可以像同步方法一样立即返回值,但是并不是立即返
 他有三种状态: pending,fulfilled,rejected  
 
 ### primise 执行的顺序问题
+```js
 let promise = new Promise((resolve,reject)=>{
+  resolve(1)  // 一般 resolve 或者 reject 之后, promise 的使命就结束了,有啥事儿就在 then 里面做.   可以在 前面加 resolve
+  console.log(2) // 他会先打印
+}) 
+promise.then(v=>{console.log('v',v) })
 
-}) 里面的代码是立即执行的, resolve或者 reject 之后,new Promise 中的后续代码还会继续执行  
-promise.then()  .then 里面的代码 不会在 resolve 之后立即执行,要等 所有同步代码执行完之后,才会执行    
+
+```
+new Promise 里面的代码是立即执行的, resolve或者 reject 之后,new Promise 中的后续代码还会继续执行  
+promise.then()  .then 里面的代码 不会在 resolve 之后立即执行,要等 所有同步代码执行完之后,才会执行 
+
 
 ### promise实例
 ```js
