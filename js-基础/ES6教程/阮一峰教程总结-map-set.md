@@ -31,8 +31,13 @@ const ws4 = new WeakSet([{}])
 #### add delete has 方法
 
 #### Map
-为了解决 对象的 key 只能是字符串或者 数字的问题,按照内存地址来分辨是否是同一个 key 
+为了解决 对象的 key 只能是字符串或者 数字的问题,按照内存地址来分辨是否是同一个 key  
+认为` +0 === -0`,` NaN === NaN`
 `const map = new Map(二维数组)`,可以从 map 创建新 map,`new Map(m)`  
 或者从 set 创建 `new Map(set.entries)`
-#### size set,  get, has, delete
-数字     新的map  值  bool   bool
+#### size set,  get, has, delete clear
+数字     新的map  值  bool   bool  无
+set 可以链式调用,
+
+#### keys values entries forEach
+顺序是和插入顺序
