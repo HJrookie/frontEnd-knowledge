@@ -40,4 +40,27 @@ const ws4 = new WeakSet([{}])
 set 可以链式调用,
 
 #### keys values entries forEach
-顺序是和插入顺序
+顺序是和插入顺序一致,entries 作用不大, 直接`let i of map`  
+转数组 `[...m.keys()]  [...m.values()]  [...m.entries()] 等于 [...m]`  
+然后类似 set,使用 map 和 filter  
+
+#### 其它容器转换
+map => arr `[...map] [...map.keys()] [...map.entries()]`   
+arr => map `new Map(二维数组)  new Map([[],[1,2,3,4]])`  
+map => 对象  
+```js
+[...map].reduce((prev,cur)=>{
+  prev[cur[0]] = cur[1];
+ return prev;
+},{})
+```
+对象  => map  
+```js
+new Map(Object.entries(obj))  // 或者自己写
+```
+
+map=> json  
+转数组 json `JSON.stringify([...m])`  
+转 对象 json, `JSON.stringify(toObj(m))` 
+
+json=> map  `JSON.parse(json)得到对象,对象再转 map`
