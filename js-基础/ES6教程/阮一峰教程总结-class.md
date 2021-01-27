@@ -1,5 +1,9 @@
 #### 一般写法
 ```js
+class TestA{}
+const ClassB = class {} 
+const ClassB = class innerName {} 
+
 class Point {
   constructor(x, y) {
   // 这种写法, 会把属性定义到 新对象 上
@@ -11,6 +15,11 @@ class Point {
   toString() {
     return '(' + this.x + ', ' + this.y + ')';
   }
+  
+  // get 和 set 被设置到了 类的原型对象的 Descriptor 上
+  get x(){}
+  // 不能只写 get,不写 set,可以只写 set,不写 get
+  set x(v){}
 }
 ```
 
