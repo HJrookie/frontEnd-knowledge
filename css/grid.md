@@ -28,19 +28,19 @@
 ```css
 grid-auto-flow:  row,column，row dense,column dense(先填满空格)
 ```
-6.justify-items 属性，align-items 属性，place-items 属性(在网格中内容如何对齐)
+6.justify-items 属性，align-items 属性，place-items 属性(在网格中内容如何对齐,每个小格子中的位置)
 ```css
 .container {
-  justify-items: start | end | center | stretch;
-  align-items: start | end | center | stretch;
+  justify-items: start | end | center | stretch;  默认 stretch
+  align-items: start | end | center | stretch;   默认 stretch
   place-items: <align-items> <justify-items>;  //简写 这里先列后行 坑爹啊
 }
 ```
-7. justify-content 属性，align-content 属性，place-content 属性  
+7. justify-content 属性，align-content 属性，place-content 属性,设置整个内容区的位置  
 ```css
 .container {
-  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
-  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;  默认 start
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  默认 start
   place-content: <align-content> <justify-content>// 缩写. 先列后行  坑爹啊
 }
 ```
