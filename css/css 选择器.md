@@ -49,6 +49,9 @@ Syntax: A + B
 4. General sibling combinator    兄弟元素,所有  
 Syntax: A ~ B  
 
+#### 选择器 效率 
+id,和类 性能差不多,id 略好,  
+
 ### Pseudo
 1. Pseudo Class  
 2. Pseudo Element  
