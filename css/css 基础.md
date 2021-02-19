@@ -15,10 +15,11 @@ box-shadow: inset 5em 1em gold;
 /* 任意数量的阴影，以逗号分隔 */
 box-shadow: 3px 3px red, -1em 0 0.4em olive; 
 
-/* 全局关键字 */
-box-shadow: inherit;
-box-shadow: initial;
-box-shadow: unset;
+// 还有  
+filter: drop-shadow(2px 4px 6px black)
+filter 很有用, 可以设置亮度 ,对比度, 灰度
+
+
 ```
 
 2. 自适应 关键字
