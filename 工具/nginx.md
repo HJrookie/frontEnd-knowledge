@@ -15,7 +15,7 @@
 #### 命令列表
 1. 启动  `start nginx`
 2. nginx -s [cmds]   [nginx 文档](http://nginx.org/en/docs/beginners_guide.html)    
-3. nginx -s reload
+3. `nginx -s reload` 不用重启,配置就能生效
 
 ### windows上nginx 的知识
 1. nginx 配置文件改了之后,需要reload, 然后才能生效
