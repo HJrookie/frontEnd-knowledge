@@ -12,7 +12,8 @@
 
 ####　预先要做的
 
-把 路径 加到path中
+把 路径 加到path中  
+
 #### 命令列表
 1. 启动  `start nginx`
 2. nginx -s [cmds]   [nginx 文档](http://nginx.org/en/docs/beginners_guide.html)    
