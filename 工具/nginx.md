@@ -44,4 +44,4 @@ load_module /etc/nginx/modules/ngx_http_image_filter_module.so;  # 放到 nginx 
 #### 8.1 没有 vi
 1. apt-get 换源  `sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list`  
 2. `apt-get update            apt-get upgrade`  
-3. 
+3. apt-get install vim
