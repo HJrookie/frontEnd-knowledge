@@ -4,5 +4,9 @@
 为了解决这种麻烦,就出现了 cross-env
 ### 如何使用
 ```js
-"build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"
+{
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"
+  }
+}
 ```
