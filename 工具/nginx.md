@@ -1,25 +1,47 @@
-### mac 上 nginx 的各种目录
+### 1.mac 上 nginx 的各种目录
 1. 配置文件目录   /usr/local/etc/nginx  
 2. 日志目录      /usr/local/var/log/nginx/access.log  
 3. 静态文件目录   /usr/local/var/www
 
-#### linix上常用命令
+### 2.常用命令
+##### 2.1linux上常用命令
 1. 重启       sudo nginx -s stop && sudo nginx  
 2. 拷贝文件    cd dist &&  cp -R . /usr/local/var/www && cd ..
 
-
-### win上常用命令
-
-#### 　预先要做的
-
+##### 2.2 win上常用命令
+###### 2.3 预先要做的
 把 路径 加到path中  
-
-#### 命令列表
+###### 2.4 命令列表
 1. 启动  `start nginx`
 2. nginx -s [cmds]   [nginx 文档](http://nginx.org/en/docs/beginners_guide.html)    
 3. `nginx -s reload` 不用重启,配置就能生效
 
-### windows上nginx 的知识
+### 3.1 windows上nginx 的知识
 1. nginx 配置文件改了之后,需要reload, 然后才能生效
 2. nginx 先启动之后,才能用 `nginx -s [cmd]`
 
+### 4. nginx 来做性能优化
+##### 4.1 gzip 压缩
+```nginx
+gzip on;
+gzip_min_length 1k;
+gzip_buffers 4 16k;
+#gzip_http_version 1.0;
+gzip_comp_level 2;
+gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+gzip_vary off;
+gzip_disable "MSIE [1-6]\.";
+```
+##### 4.2 图片过滤模块  [stack-overflow](https://stackoverflow.com/questions/40574866/docker-nginx-ngx-http-image-filter-module)
+模块地址在 nginx 镜像的 `/etc/nginx/modules/`, nginx 的镜像里默认会带
+```nginx
+load_module /etc/nginx/modules/ngx_http_image_filter_module.so;  # 放到 nginx 配置文件顶部
+
+```
+
+
+### 8. nginx镜像里的问题
+#### 8.1 没有 vi
+1. apt-get 换源  `sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list`  
+2. `apt-get update            apt-get upgrade`  
+3. 
