@@ -1,8 +1,17 @@
 ### 1.mac 上 nginx 的各种目录
 1. 配置文件目录   /usr/local/etc/nginx  
 2. 日志目录      /usr/local/var/log/nginx/access.log  
-3. 静态文件目录   /usr/local/var/www
+3. 静态文件目录   / 
 
+### 2. docker 上 nginx 的各种目录
+1. 配置文件目录   /etc/nginx/nginx.conf  
+2. 日志目录      /var/log/nginx  
+3. 静态文件目录   /usr/share/nginx/html
+
+### 启动命令
+32 上贵州项目的 nginx 命令
+docker run -d -p 8088:80 -v /root/app/front:/usr/share/nginx -v /etc/docker-app/nginx/nginx-guizhou.conf:/etc/nginx/nginx.conf --name nginx-guizhou  nginx
+docker run -d --restart=always --privileged=true -p 80:80 -v /root/app/nginx/static:/etc/nginx/html -v /root/app/nginx/nginx.conf:/etc/nginx/nginx.conf -v /root/app/nginx/log:/var/log/nginx --name nginx  nginx
 ### 2.常用命令
 ##### 2.1linux上常用命令
 1. 重启       sudo nginx -s stop && sudo nginx  
