@@ -1,0 +1,89 @@
+### 1. 问题表现
+在一个网页A中,通过 iframe 去加载另一个网页B,但是网页 B 中的请求都没有正确地带上 cookie  
+
+```html
+<iframe id='pveContent'
+    width='100%' height='100%'
+    allowFullScreen={true}
+    src={`${PVE}/pve-docs/api-viewer/7.html?studentId=${modelId}&QuestId=pve`}
+    frameBorder="0"/>
+
+
+```
+
+##### 1.1 iframe 逻辑分析
+- iframe 会去请求 对应地址的 7.html, 然后加载其内容,并且执行 7.html   
+- 在 7.html 中会先执行 login , 获取到 token,并且 将 token存储到 cookie 中  
+
+```js
+    function login() {
+      // 登陆获取Cookie、ticket、Token
+      $.ajax({
+        success: function (res) {
+          ticket = res.data.ticket;
+          var date = new Date();
+          // 存储 token 到 cookie 中
+          document.cookie = "PVEAuthCookie=" + ticket + ";";
+          res1 = res;
+        },
+      });
+    }
+```
+
+##### 1.2 注意的点
+上述情形是 我在开发环境启动了 一个 react 项目, 本地端口为 `127.0.0.1:9000` , 然后在该项目中,通过 iframe 加载了另一个页面 B,  
+然后 就会发现页面 B 中一些请求没有带 cookie,  
+
+但是如果 直接使用 iframe 的 src 地址,在浏览器中打开,就不会有这个问题,
+
+
+#### 2. 问题原因
+查阅网上资料,在于 Chrome 的 SameSite 策略;Chrome 添加这个策略是为了防止 csrf 攻击,以及用户追踪;
+即 原来我们通过 `document.cookie= 'a=1' 来赋值 `, 现在 cookie 里添加了一个比较特殊的 key, `SameSite`  
+这个 key 有三种值,  
+```js
+- Strict
+- Lax
+- None
+```
+
+
+##### SameSite 各种值解释            [Chrome 改动介绍](https://chromestatus.com/feature/5088147346030592)
+Lax: 默认值;如果一个站点没有明确设置 SameSite 的值,那么默认是 Lax;Lax 标签意味着仅当浏览器 URL 中的域与 cookie 的域匹配时才会设置 cookie;  
+None: 不受限制;和原来的情况一样; 由于[Chrome 限制-拒绝非 secure 的 SameSite为 None 的 Cookie,所以如果设置为 None,必须同时设置为 Secure](https://chromestatus.com/feature/5633521622188032)   
+Strict: 只有同站的才能发送; (当直接访问该网站时,是可以发送 cookie 的;但是通过链接进入网站,在最初的请求不会发送,如果想要发送的话,设置 SameSite 为 Lax)
+
+### [一些关键的介绍](https://web.dev/SameSite-cookies-explained/)
+1. 同一个 cookie 可以是第一方的，也可以是第三方的, 具体取决于 用户当时所在的网站(如果一个 cookie 和当前网站是同站的,那么就是第一方(`first-party`))   
+2. 开发者最好 显式设置 SameSite的值,来保证网站在各个浏览器表现一致;
+3. Chrome 80 之后, SameSite 默认值改成了 Lax
+
+
+
+### 同站的解释 - SameSite 
+这里的站点是域名后缀和域名后缀之前部分的组合,有一个公开的公共后缀文件,定义了一些公共后缀列表,  会作为 同站的判断依据 [文件地址](https://publicsuffix.org/list/public_suffix_list.dat)  [各种语言的判断方法](https://publicsuffix.org/learn/)     
+里面的每一个都是一个 后缀, 要看成一个整体; 例如:  
+对于 a.b.com, 来说 它的站是 `b.com` ,对于  `c.b.com`, 它的站是 `b.com`, 因此两个是同站的  
+对于 a.github.io, 来说 它的站是 `a.github.io` ,对于  `b.github.io`, 它的站是 `b.github.io`, 因此两个是`跨`站的(github.io看做一个整体? 因为公共后缀文件的规定)      
+
+
+常见的: github.io , .com, 
+同站例子: 
+www.web.dev 和 static.web.dev  
+
+
+跨站例子: 
+
+your-project.github.io  和   my-project.github.io  
+a.githubusercontent.com   和  b.githubusercontent.com  
+a.githubpreview.dev   和  b.githubpreview.dev  
+
+
+### 3. 解决方案
+因此解决方案可以分为两类,  
+1. 把两个站点设置为 同站的,不修改 `SameSite`的值(默认为 Lax);  
+2. 修改 SameSite 配置为 `Secure None`;  
+```js
+// 在本例中 如此改动即可
+document.cookie = " a=" + ticket + ";path=/;SameSite=None; Secure";
+```
