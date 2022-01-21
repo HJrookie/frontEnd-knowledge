@@ -7,3 +7,25 @@ Request Entity Too Large  413
 这方法有问题,小文件没啥问题  
 大文件不好,切片来做.File原型对象的slice方法来做,start,end, 
 设置切片的大小,文件总大小,Math.ceil算切片的总个数,    
+
+
+#### 上传文件的例子
+```js
+<el-form-item style="display: none">
+    <input type="file" ref="file" @change="handleFileChange" />
+</el-form-item>
+ <el-form-item>
+    <el-button type="primary" @click="importFile()"><i class="iconfont icon-add" /> 导入EXCEL </el-button>
+</el-form-item>
+
+
+...
+importFile() {
+    this.$refs.file.click();
+},
+handleFileChange(event) {
+    const files = event.target.files;
+    const rawFile = files[0];
+    console.log("file", rawFile);
+},
+```

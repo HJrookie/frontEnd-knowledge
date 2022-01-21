@@ -1,10 +1,3 @@
-### BFC
-
-绝对定位 float  
-overflow display
-#### BFC特性
-相互独立 互不影响,从上到下,margin重叠, 包含浮动元素,高度被计算在内  
-每个元素左边缘与该元素的父元素的左侧向接触.(左到右).对于浮动元素也是如此.除非该元素自己形成了新的BFC
 
 ### 网络七层
 ####物理层
@@ -81,14 +74,6 @@ Number.isNAN ，只对NAN有用
 ### ws,connnection,upgrade,websocket
 
 #### 除2商0,乘2小数为0
-
-
-#### 相对定位
-relative,相对元素原来的位置进行定位,设置偏移,不影响其他元素的位置    
-absolute: 父元素static,它时相对于根元素(html)定位的,  
-    父元素设置了相对定位,或者绝对定位,根据离自己最近的设置了相对定位,或者绝对定位的父元素进行定位,(最近的非static的父元素)  
-    详情见博客[定位相关](https://www.runoob.com/w3cnote/css-position-static-relative-absolute-fixed.html)
-
 
 ### 不支持冒泡的事件 
 **fbmouse,loadresize**
