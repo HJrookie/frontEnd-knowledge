@@ -1,7 +1,7 @@
 ### 1.mac 上 nginx 的各种目录
 1. 配置文件目录   /usr/local/etc/nginx  
 2. 日志目录      /usr/local/var/log/nginx/access.log  
-3. 静态文件目录   / 
+3. 静态文件目录   / /usr/local/var/www/static
 
 ### 2. docker 上 nginx 的各种目录
 1. 配置文件目录   /etc/nginx/nginx.conf  
@@ -12,6 +12,26 @@
 32 上贵州项目的 nginx 命令
 docker run -d -p 8088:80 -v /root/app/front:/usr/share/nginx -v /etc/docker-app/nginx/nginx-guizhou.conf:/etc/nginx/nginx.conf --name nginx-guizhou  nginx
 docker run -d --restart=always --privileged=true -p 80:80 -v /root/app/nginx/static:/etc/nginx/html -v /root/app/nginx/nginx.conf:/etc/nginx/nginx.conf -v /root/app/nginx/log:/var/log/nginx --name nginx  nginx
+
+
+
+
+
+docker run -d --restart=always --privileged=true -p 80:80 -v /usr/local/letmsHtml:/usr/local/letmsHtml -v /usr/local/nginx/nginx.conf:/etc/nginx/nginx.conf -v /usr/local/file:/usr/local/file --name nginx  nginx
+
+// 天津大赛 7 月在云服务上部署时的命令  
+docker run -d --restart=always --privileged=true -p 8081:80 -v /etc/localtime:/etc/localtime -v /home/lenovo/dockerProjects/nginx/nginx.conf:/etc/nginx/nginx.conf -v /usr/local/file:/usr/local/file -v /home/lenovo/dockerProjects/nginx/static:/usr/share/nginx/html -v /home/lenovo/dockerProjects/nginx/logs:/var/log/nginx --name nginx  nginx:1.23
+
+
+
+
+      - /etc/localtime:/etc/localtime
+      - ../dist:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /usr/local/file:/usr/local/file
+      - ./logs:/var/log/nginx
+
+
 ### 2.常用命令
 ##### 2.1linux上常用命令
 1. 重启       sudo nginx -s stop && sudo nginx  
